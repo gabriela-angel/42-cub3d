@@ -1,0 +1,6 @@
+valgrind.log
+gmon.out
+cub3d
+
+build/
+test/
