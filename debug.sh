@@ -63,3 +63,5 @@ cat > .vscode/launch.json <<EOF
     ]
 }
 EOF
+
+echo "${CYAN}Arquivos .vscode/tasks.json e .vscode/launch.json criados!\n${NC}"

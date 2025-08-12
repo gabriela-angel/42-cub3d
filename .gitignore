@@ -2,5 +2,6 @@ valgrind.log
 gmon.out
 cub3d
 
+.vscode/
 build/
 test/

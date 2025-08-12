@@ -123,6 +123,7 @@ valgrind: all
 	--show-leak-kinds=all -s \
 	--track-origins=yes \
 	--log-file=$(VALGRIND_LOG) \
+	--suppressions=./MLX.supp \
 	./$(NAME)
 	@cat $(VALGRIND_LOG)
 
