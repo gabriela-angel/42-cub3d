@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 09:31:00 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/08/11 21:00:34 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/11 22:01:25 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct s_ctx
 
 // Malloc and put the pointer in the garbage collector to manage it
 void				*ft_gc_malloc(size_t size);
-// Free the pointer and remove it from the garbage collector
+// Free the pointer and remove it from the garbage collector (low performance)
 void				ft_gc_free(void *ptr);
 // Free all the pointers in the garbage collector
 void				ft_gc_clean_all(void);
