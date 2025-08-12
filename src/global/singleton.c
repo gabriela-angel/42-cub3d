@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   singleton.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 08:15:36 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/08/11 21:45:59 by lhenriqu         ###   ########.fr       */
+/*   Created: 2025/08/11 21:40:39 by lhenriqu          #+#    #+#             */
+/*   Updated: 2025/08/11 21:48:22 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(void)
+t_mlx *get_global_mlx(void)
 {
-	ft_init_mlx();
-	return (0);
+    static t_mlx mlx_struct;
+
+    return (&mlx_struct);
 }

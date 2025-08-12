@@ -44,8 +44,13 @@ SRC_PATH = ./src/
 HEADER_PATH = ./include/
 BUILD_PATH = ./build/
 
+GLOBAL_PATH = ./global/
+
 FILES = \
 	main.c \
+	init.c \
+	error.c \
+	$(GLOBAL_PATH)singleton.c \
 
 OBJS = $(addprefix $(BUILD_PATH), $(FILES:%.c=%.o))
 
@@ -73,7 +78,7 @@ ifeq ($(wildcard $(LIB_PATH)/$(LIB_NAME)),)
 endif
 
 $(BUILD_PATH):
-	@mkdir -p $(BUILD_PATH)
+	@mkdir -p $(BUILD_PATH)${GLOBAL_PATH}
 
 print:
 ifeq ($(wildcard $(NAME)),)
