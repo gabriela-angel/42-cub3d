@@ -50,6 +50,7 @@ FILES = \
 	main.c \
 	init.c \
 	error.c \
+	hooks.c \
 	$(GLOBAL_PATH)singleton.c \
 
 OBJS = $(addprefix $(BUILD_PATH), $(FILES:%.c=%.o))

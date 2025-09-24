@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 20:17:56 by lcosta-g          #+#    #+#             */
-/*   Updated: 2025/08/11 22:04:50 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/09/23 22:24:43 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,28 @@ typedef enum e_error
 # define WIDTH 800
 # define HEIGHT 600
 
+// KEY BINDS
+# define W MLX_KEY_W
+# define A MLX_KEY_A
+# define S MLX_KEY_S
+# define D MLX_KEY_D
+# define LEFT MLX_KEY_LEFT
+# define RIGHT MLX_KEY_RIGHT
+# define ESC MLX_KEY_ESCAPE
+// missing mouse
+
 typedef struct s_mlx
 {
-	mlx_t	*instance;
+	mlx_t		*instance;
 }			t_mlx;
 
 t_mlx		*get_global_mlx(void);
 void		ft_init_mlx(void);
 void		ft_error(t_error code);
+
+// HOOKS
+void		key_hook(mlx_key_data_t keydata, void *param);
+void		cursor_hook(double xpos, double ypos, void *param);
+
 
 #endif
