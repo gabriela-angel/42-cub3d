@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 21:15:06 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/09/25 21:16:19 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/09/28 03:45:05 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,22 @@
 
 typedef struct s_map
 {
-	int			start_map;
-	size_t		height;
-	size_t		width;
-	char		*name;
-	int			fd;
-	int			**matrix;
-}				t_map;
+	size_t			height;
+	size_t			width;
+	char			*path;
+	int				fd;
+	int				**matrix;
+	t_map_textures	textures;
+}					t_map;
 
-typedef struct s_file
+typedef struct s_map_textures
 {
-	uint32_t	floor;
-	uint32_t	ceiling;
-	char		*no_path;
-	char		*so_path;
-	char		*we_path;
-	char		*ea_path;
-}				t_file;
+	uint32_t		floor;
+	uint32_t		ceiling;
+	t_hash_table	*paths;
+}					t_map_textures;
 
-void			ft_init_map(char *name);
+void				ft_init_map(char *map_path);
+void				valid_map_path(char *map_path);
 
 #endif

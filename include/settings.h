@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   settings.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/11 20:17:56 by lcosta-g          #+#    #+#             */
-/*   Updated: 2025/09/28 03:01:35 by lhenriqu         ###   ########.fr       */
+/*   Created: 2025/09/27 13:42:53 by lhenriqu          #+#    #+#             */
+/*   Updated: 2025/09/27 13:48:06 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef SETTINGS_H
+# define SETTINGS_H
 
-# include "../libs/libft/libft.h"
-# include "error.h"
-# include "map.h"
-# include "mlx.h"
-# include "settings.h"
-# include <fcntl.h>
-# include <stdlib.h>
-# include <unistd.h>
+// Constants for window dimensions
+# define WIDTH 800
+# define HEIGHT 600
 
-typedef struct s_cube
-{
-	t_map		map;
-}	t_cube;
-
-t_cube *get_global_cube(void);
-char	*trim(char *str);
 
 #endif

@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   mlx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/11 20:17:56 by lcosta-g          #+#    #+#             */
-/*   Updated: 2025/09/28 03:01:35 by lhenriqu         ###   ########.fr       */
+/*   Created: 2025/08/11 21:45:32 by lhenriqu          #+#    #+#             */
+/*   Updated: 2025/09/27 13:49:41 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "cub3d.h"
 
-# include "../libs/libft/libft.h"
-# include "error.h"
-# include "map.h"
-# include "mlx.h"
-# include "settings.h"
-# include <fcntl.h>
-# include <stdlib.h>
-# include <unistd.h>
-
-typedef struct s_cube
+void	ft_init_mlx(void)
 {
-	t_map		map;
-}	t_cube;
+	t_mlx *g_mlx;
 
-t_cube *get_global_cube(void);
-char	*trim(char *str);
-
-#endif
+	g_mlx = get_global_mlx();
+	g_mlx->instance = mlx_init(WIDTH, HEIGHT, "Cub3d", false);
+    if (!g_mlx->instance)
+        ft_error(E_MLX_INIT_FAILED);
+}
