@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/11 21:45:32 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/09/25 21:11:57 by lhenriqu         ###   ########.fr       */
+/*   Created: 2025/08/11 21:52:36 by lhenriqu          #+#    #+#             */
+/*   Updated: 2025/10/01 15:16:53 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	ft_init_map(char *name)
+static void print_error(char *message)
 {
-	check_map(name);
+	ft_printf_fd(2, C_RED C_BLD "Error: " C_RST C_RED "%s\n" C_RST, message);
 }
 
-void	ft_init_mlx(void)
+void	ft_error(t_error code)
 {
-	t_mlx *g_mlx;
-
-	g_mlx = get_global_mlx();
-	g_mlx->instance = mlx_init(WIDTH, HEIGHT, "Cub3d", false);
-    if (!g_mlx->instance)
-        ft_error(E_MLX_INIT_FAILED);
+	if (code == E_MLX_INIT_FAILED)
+		print_error("Failed to initialize MLX.");
+	ft_map_destroy(get_global_cube()->map.textures.paths);
+    ft_gc_clean_all();
+	exit(EXIT_FAILURE);
 }

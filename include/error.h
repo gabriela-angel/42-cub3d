@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/11 21:52:36 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/08/11 22:08:31 by lhenriqu         ###   ########.fr       */
+/*   Created: 2025/09/27 13:42:01 by lhenriqu          #+#    #+#             */
+/*   Updated: 2025/09/27 14:11:15 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#ifndef ERROR_H
+# define ERROR_H
 
-static void print_error(char *message)
+// Error codes for the application
+typedef enum e_error
 {
-	ft_printf_fd(2, C_RED C_BLD "Error: " C_RST C_RED "%s\n" C_RST, message);
-}
+	E_EMPTY_MAP = 1,
+	E_OPEN_FAILED,
+	E_INVALID_ARGS,
+	E_MLX_INIT_FAILED,
+	E_INVALID_MAP_NAME,
+	E_INVALID_FILE_CHAR,
+}			t_error;
 
-void	ft_error(t_error code)
-{
-	if (code == E_MLX_INIT_FAILED)
-		print_error("Failed to initialize MLX.");
-    ft_gc_clean_all();
-	exit(EXIT_FAILURE);
-}
+void	ft_error(t_error code);
+
+#endif

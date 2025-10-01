@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   mlx.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 08:15:36 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/09/27 13:51:22 by lhenriqu         ###   ########.fr       */
+/*   Created: 2025/09/27 13:44:39 by lhenriqu          #+#    #+#             */
+/*   Updated: 2025/09/27 13:48:09 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#ifndef MLX_H
+# define MLX_H
 
-int	main(int ac, char *av[])
+# include "../libs/MLX/include/MLX42/MLX42.h"
+
+typedef struct s_mlx
 {
-	if (ac != 2)
-		ft_error(E_INVALID_ARGS);
-	ft_init_map(av[1]);
-	ft_init_mlx();
-	return (0);
-}
+	mlx_t	*instance;
+}			t_mlx;
+
+t_mlx		*get_global_mlx(void);
+void		ft_init_mlx(void);
+
+#endif

@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/25 18:17:01 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/09/25 20:08:24 by lhenriqu         ###   ########.fr       */
+/*   Created: 2025/09/25 21:15:06 by lhenriqu          #+#    #+#             */
+/*   Updated: 2025/09/28 03:45:05 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#ifndef MAP_H
+# define MAP_H
 
-void	check_map(char *file)
+# include "cub3d.h"
+
+typedef struct s_map
 {
-	char	*tmp;
-	int		fd;
+	size_t			height;
+	size_t			width;
+	char			*path;
+	int				fd;
+	int				**matrix;
+	t_map_textures	textures;
+}					t_map;
 
-	if (ft_strcmp(file + ft_strlen(file) - 4, ".cub") != 0)
-		ft_error(E_INVALID_MAP_NAME);
-	fd = open(file, O_RDONLY);
-	if (fd == -1)
-		ft_error(E_OPEN_FAILED);
-	tmp = get_next_line(fd);
-	if (!tmp)
-	{
-		close(fd);
-		ft_error(E_EMPTY_MAP);
-	}
-	free(tmp);
-	close_and_clear(fd);
-}
+typedef struct s_map_textures
+{
+	uint32_t		floor;
+	uint32_t		ceiling;
+	t_hash_table	*paths;
+}					t_map_textures;
+
+void				ft_init_map(char *map_path);
+void				valid_map_path(char *map_path);
+
+#endif

@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   settings.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 08:15:36 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/09/27 13:51:22 by lhenriqu         ###   ########.fr       */
+/*   Created: 2025/09/27 13:42:53 by lhenriqu          #+#    #+#             */
+/*   Updated: 2025/09/27 13:48:06 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#ifndef SETTINGS_H
+# define SETTINGS_H
 
-int	main(int ac, char *av[])
-{
-	if (ac != 2)
-		ft_error(E_INVALID_ARGS);
-	ft_init_map(av[1]);
-	ft_init_mlx();
-	return (0);
-}
+// Constants for window dimensions
+# define WIDTH 800
+# define HEIGHT 600
+
+
+#endif
