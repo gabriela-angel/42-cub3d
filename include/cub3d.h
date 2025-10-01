@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 20:17:56 by lcosta-g          #+#    #+#             */
-/*   Updated: 2025/10/01 14:50:31 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/01 19:25:07 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ typedef struct s_cube
 }	t_cube;
 
 t_cube *get_global_cube(void);
-
 char	*trim(char *str);
 
 #endif
