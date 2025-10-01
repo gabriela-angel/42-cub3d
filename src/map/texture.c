@@ -6,13 +6,13 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 15:06:00 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/01 18:52:06 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/01 19:47:44 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static char	*sanitize_string(char *line)
+char	*sanitize_string(char *line)
 {
 	size_t	i;
 
@@ -39,13 +39,13 @@ static void	set_texture(char *key, t_map *map, char *line)
 
 static void	set_ceiling_and_floor(char *line, t_map *map)
 {
-	if (ft_strncmp(line, "F", 1) == 0)
+	if (line[0] == 'F')
 	{
 		if (map->textures.floor)
 			ft_error(E_F_DUP);
 		map->textures.floor = rgb_to_int(trim(line + 1));
 	}
-	if (ft_strncmp(line, "C", 1) == 0)
+	if (line[0] == 'C')
 	{
 		if (map->textures.ceiling)
 			ft_error(E_C_DUP);
@@ -58,7 +58,7 @@ static void	fill_texture_paths(t_map *map)
 	char	*line;
 	char	*tmp;
 	t_bool	map_end;
-	
+
 	map_end = FALSE;
 	while (1)
 	{

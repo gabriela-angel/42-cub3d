@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 15:10:08 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/01 19:17:41 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/01 19:56:45 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,17 @@
 
 t_bool	has_map_char(char *line)
 {
+	char	c;
+
 	if (!line)
+		return (FALSE);
+	c = sanitize_string(line)[0];
+	if (c == 'F' || c == 'C')
 		return (FALSE);
 	return (ft_strchr(line, '1') || ft_strchr(line, '0'));
 }
 
-static void validate_map_matrix(char **matrix)
+static void	validate_map_matrix(char **matrix)
 {
 	size_t	i;
 	size_t	j;
@@ -61,7 +66,8 @@ static void	fill_matrix(t_map *map)
 		i++;
 		line = get_next_line(map->fd);
 	}
-	free(line);
+	// validar o ultimo line que foi lido no loop
+	validate_map_is_last_element(map);
 	close_and_clear(map->fd);
 }
 
