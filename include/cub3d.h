@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 20:17:56 by lcosta-g          #+#    #+#             */
-/*   Updated: 2025/09/23 22:24:43 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/09/30 22:53:05 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../libs/MLX/include/MLX42/MLX42.h"
 # include "../libs/libft/libft.h"
+# include <math.h>
 
 // Error codes for the application
 typedef enum e_error
@@ -31,10 +32,58 @@ typedef enum e_error
 # define A MLX_KEY_A
 # define S MLX_KEY_S
 # define D MLX_KEY_D
-# define LEFT MLX_KEY_LEFT
-# define RIGHT MLX_KEY_RIGHT
+# define LEFT_KEY MLX_KEY_LEFT
+# define RIGHT_KEY MLX_KEY_RIGHT
 # define ESC MLX_KEY_ESCAPE
-// missing mouse
+
+enum	e_axis
+{
+	X,
+	Y
+};
+
+enum	e_direction
+{
+	RIGHT = 1,
+	LEFT = -1
+};
+
+enum	e_texture
+{
+	NORTH,
+	SOUTH,
+	WEST,
+	EAST
+};
+
+// TEST PURPOSE ONLY - create proper struct later
+typedef struct s_img
+{
+	mlx_image_t			*bg;
+	mlx_image_t			*rect_1;
+	mlx_image_t			*rect_2;
+}						t_img;
+
+typedef struct s_player
+{
+	double	pos[2];
+	double	dir[2];
+	double	plane[2];
+}	t_player;
+
+typedef struct s_ray
+{
+	double	cam_x;
+	int		map_pos[2];
+	double	dir[2];
+	double	side_dist[2];
+	double	delta_dist[2];
+	double	wall_dist;
+	int step[2];
+	int hit;
+	int side;
+}	t_ray;
+
 
 typedef struct s_mlx
 {
