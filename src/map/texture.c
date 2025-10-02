@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 15:06:00 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/01 19:47:44 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/02 16:46:05 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,24 @@ static void	set_ceiling_and_floor(char *line, t_map *map)
 	}
 }
 
+static void valid_line(char *line, t_bool map_end)
+{
+	if (line[0] == '\n')
+		return ;
+	if (ft_strncmp(line, "NO", 2)
+		&& ft_strncmp(line, "SO", 2)
+		&& ft_strncmp(line, "WE", 2)
+		&& ft_strncmp(line, "EA", 2)
+		&& line[0] != 'F'
+		&& line[0] != 'C')
+	{
+		add_error_context(ft_strdup(line));
+		ft_error(E_INVALID_ELEMENT);
+	}
+	if (map_end)
+		ft_error(E_MAP_NOT_LAST_ELEMENT);
+}
+
 static void	fill_texture_paths(t_map *map)
 {
 	char	*line;
@@ -67,6 +85,7 @@ static void	fill_texture_paths(t_map *map)
 			break ;
 		tmp = line;
 		line = sanitize_string(line);
+		valid_line(line, map_end);
 		set_texture("NO", map, line);
 		set_texture("SO", map, line);
 		set_texture("WE", map, line);

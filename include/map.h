@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 21:15:06 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/01 19:46:33 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/02 16:57:33 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ typedef struct s_map_textures
 
 void				ft_init_map(char *map_path);
 void				valid_map_path(char *map_path);
-char	*sanitize_string(char *line);
+char				*sanitize_string(char *line);
+void				handle_map_textures(t_map *map);
+void				handle_map_matrix(t_map *map);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 15:10:08 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/01 19:56:45 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/02 16:48:19 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,7 @@ static void	fill_matrix(t_map *map)
 		i++;
 		line = get_next_line(map->fd);
 	}
-	// validar o ultimo line que foi lido no loop
-	validate_map_is_last_element(map);
+	free(line);
 	close_and_clear(map->fd);
 }
 
