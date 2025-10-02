@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 14:07:52 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/09/28 04:19:52 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/02 17:24:40 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*trim(char *str)
 	int	end;
 
 	start = 0;
-	end = strlen(str) - 1;
+	end = ft_strlen(str) - 1;
 	while (str[start] == ' ' || str[start] == '\t')
 		start++;
 	while (end >= start && (str[end] == ' ' || str[end] == '\t'))

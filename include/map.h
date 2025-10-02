@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 21:15:06 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/02 16:57:33 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/02 17:23:44 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,7 @@
 # define MAP_H
 
 # include "cub3d.h"
-
-typedef struct s_map
-{
-	size_t			height;
-	size_t			width;
-	char			*path;
-	int				fd;
-	int				**matrix;
-	t_map_textures	textures;
-}					t_map;
+# include <stdint.h>
 
 typedef struct s_map_textures
 {
@@ -32,10 +23,22 @@ typedef struct s_map_textures
 	t_hash_table	*paths;
 }					t_map_textures;
 
+typedef struct s_map
+{
+	size_t			height;
+	size_t			width;
+	char			*path;
+	int				fd;
+	char			**matrix;
+	t_map_textures	textures;
+}					t_map;
+
 void				ft_init_map(char *map_path);
 void				valid_map_path(char *map_path);
 char				*sanitize_string(char *line);
 void				handle_map_textures(t_map *map);
 void				handle_map_matrix(t_map *map);
+t_bool				has_map_char(char *line);
+void	valid_textures(t_map *map);
 
 #endif

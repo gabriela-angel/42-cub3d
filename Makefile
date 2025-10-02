@@ -44,13 +44,23 @@ SRC_PATH = ./src/
 HEADER_PATH = ./include/
 BUILD_PATH = ./build/
 
-GLOBAL_PATH = ./global/
+SHARED_FOLDER = ./shared/
+MAP_FOLDER = ./map/
+MLX_FOLDER = ./mlx/
 
 FILES = \
 	main.c \
-	init.c \
-	error.c \
-	$(GLOBAL_PATH)singleton.c \
+	\
+	$(MAP_FOLDER)map.c \
+	$(MAP_FOLDER)matrix.c \
+	$(MAP_FOLDER)texture.c \
+	$(MAP_FOLDER)validation.c \
+	\
+	$(MLX_FOLDER)mlx.c \
+	\
+	$(SHARED_FOLDER)utils.c \
+	$(SHARED_FOLDER)error.c \
+	$(SHARED_FOLDER)global.c \
 
 OBJS = $(addprefix $(BUILD_PATH), $(FILES:%.c=%.o))
 
@@ -78,7 +88,7 @@ ifeq ($(wildcard $(LIB_PATH)/$(LIB_NAME)),)
 endif
 
 $(BUILD_PATH):
-	@mkdir -p $(BUILD_PATH)${GLOBAL_PATH}
+	@mkdir -p $(dir $(OBJS))
 
 print:
 ifeq ($(wildcard $(NAME)),)
@@ -94,7 +104,7 @@ $(NAME): $(OBJS) $(HEADER_PATH)cub3d.h
 	@printf "$(UP)$(CUT)"
 	@printf "$(GREEN)[Builded]$(RESET) $(NAME)...\n"
 	@printf "$(CYAN)------ --------------------------------------------- ------$(RESET)\n"
-	@printf "$(CYAN)------| MINISHELL executable was created successfully!! |------$(RESET)\n"
+	@printf "$(CYAN)------| CUB3D executable was created successfully!! |------$(RESET)\n"
 	@printf "$(CYAN)------ --------------------------------------------- ------$(RESET)\n"
 	@echo " "
 

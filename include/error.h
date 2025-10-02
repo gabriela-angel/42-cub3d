@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 13:42:01 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/02 16:55:52 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/02 17:24:19 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,11 @@ typedef enum e_error
 	E_SO_FILE,
 	E_WE_FILE,
 	E_EA_FILE,	
+
+	E_INVALID_RGB
 }			t_error;
 
 void	ft_error(t_error code);
+void add_error_context(char *message);
 
 #endif

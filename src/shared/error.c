@@ -6,13 +6,13 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 21:52:36 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/02 16:47:25 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/02 17:22:42 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void add_error_context(char *message)
+void add_error_context(char *message)
 {
 	t_cube	*cube;
 

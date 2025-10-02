@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 15:06:00 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/02 16:46:05 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/02 17:23:57 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,6 @@ static void	fill_texture_paths(t_map *map)
 
 void	handle_map_textures(t_map *map)
 {
-	char	*line;
-
 	map->fd = open(map->path, O_RDONLY);
 	if (map->fd < 0)
 		ft_error(E_OPEN_FAILED);
