@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 13:42:01 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/03 11:30:48 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/03 13:37:04 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,9 @@ typedef enum e_error
 }		t_error;
 
 void	ft_error(t_error code);
+void	print_error(char *message);
 void	add_error_context(char *message);
+void	handle_generic_errors(t_error code);
+void	handle_map_errors(t_error code);
 
 #endif

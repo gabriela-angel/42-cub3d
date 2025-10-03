@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 13:28:47 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/03 13:32:54 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/03 13:36:21 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	handle_texture_file_errors(t_error code)
 		print_error("\tEA texture file could not be opened: ");
 }
 
-static void	handle_map_errors(t_error code)
+void	handle_map_errors(t_error code)
 {
 	handle_texture_miss(code);
 	handle_texture_dup(code);

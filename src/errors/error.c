@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 13:28:14 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/03 13:30:57 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/03 13:36:05 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	add_error_context(char *message)
 	get_global_cube()->error_context = message;
 }
 
-static void	print_error(char *message)
+void	print_error(char *message)
 {
 	ft_printf_fd(2, C_RED "%s" C_RST, message);
 	if (get_global_cube()->error_context)

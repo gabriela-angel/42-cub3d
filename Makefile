@@ -44,12 +44,16 @@ SRC_PATH = ./src/
 HEADER_PATH = ./include/
 BUILD_PATH = ./build/
 
+ERRORS_FOLDER = ./errors/
 SHARED_FOLDER = ./shared/
 MAP_FOLDER = ./map/
 MLX_FOLDER = ./mlx/
 
 FILES = \
 	main.c \
+	$(ERRORS_FOLDER)map.c \
+	$(ERRORS_FOLDER)error.c \
+	$(ERRORS_FOLDER)generic.c \
 	\
 	$(MAP_FOLDER)map.c \
 	$(MAP_FOLDER)matrix.c \
@@ -59,7 +63,6 @@ FILES = \
 	$(MLX_FOLDER)mlx.c \
 	\
 	$(SHARED_FOLDER)utils.c \
-	$(SHARED_FOLDER)error.c \
 	$(SHARED_FOLDER)global.c \
 
 OBJS = $(addprefix $(BUILD_PATH), $(FILES:%.c=%.o))
