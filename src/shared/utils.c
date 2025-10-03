@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 14:07:52 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/03 12:00:38 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/03 12:20:03 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +49,20 @@ uint32_t	rgb_to_int(char *str)
 	uint32_t	color;
 	char		**rgb;
 
+	str[ft_strlen(str) - 1] = '\0';
 	rgb = ft_split(str, ',');
 	counter = 0;
 	while (rgb && rgb[counter])
 		counter++;
 	if (counter != 3)
 	{
-		if (rgb)
-			ft_free_matrix((void **)rgb, free);
+		ft_free_matrix((void **)rgb, free);
 		add_error_context(ft_strdup("\n\tExample: F 220,100,210"));
 		ft_error(E_INVALID_RGB_FIELDS);
 	}
 	if (!is_valid_rgbs(rgb))
 	{
-		if (rgb)
-			ft_free_matrix((void **)rgb, free);
+		ft_free_matrix((void **)rgb, free);
 		add_error_context(ft_strdup("\n\tExample: C 120,0,10"));
 		ft_error(E_INVALID_RGB_VALUE);
 	}

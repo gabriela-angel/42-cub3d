@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 21:52:36 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/03 12:02:59 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/03 12:06:32 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,13 @@ static void	handle_texture_dup(t_error code)
 static void	handle_texture_file_errors(t_error code)
 {
 	if (code == E_NO_INV_EXT)
-		print_error("\tNO texture file must be a " C_YEL ".png" C_RED " file.");
+		print_error("\tNO texture file must be a " C_YEL ".png/.xpm" C_RED " file.");
 	else if (code == E_SO_INV_EXT)
-		print_error("\tSO texture file must be a " C_YEL ".png" C_RED " file.");
+		print_error("\tSO texture file must be a " C_YEL ".png/.xpm" C_RED " file.");
 	else if (code == E_WE_INV_EXT)
-		print_error("\tWE texture file must be a " C_YEL ".png" C_RED " file.");
+		print_error("\tWE texture file must be a " C_YEL ".png/.xpm" C_RED " file.");
 	else if (code == E_EA_INV_EXT)
-		print_error("\tEA texture file must be a " C_YEL ".png" C_RED " file.");
+		print_error("\tEA texture file must be a " C_YEL ".png/.xpm" C_RED " file.");
 	else if (code == E_NO_FILE)
 		print_error("\tNO texture file could not be opened: ");
 	else if (code == E_SO_FILE)

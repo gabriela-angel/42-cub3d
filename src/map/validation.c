@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 13:39:10 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/03 10:59:53 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/03 12:08:39 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,23 @@ static void	check_textures_present(t_map *map)
 static void	check_texture_extensions(t_map *map)
 {
 	char	*path;
+	ssize_t no_ext;
 
 	path = ft_map_search(map->textures.paths, "NO");
-	if (ft_strcmp(path + ft_strlen(path) - 4, ".png") != 0)
+	no_ext = ft_strlen(path) - 4;
+	if (ft_strcmp(path + no_ext, ".png") != 0 && ft_strcmp(path + no_ext, ".xpm") != 0)
 		ft_error(E_NO_INV_EXT);
 	path = ft_map_search(map->textures.paths, "SO");
-	if (ft_strcmp(path + ft_strlen(path) - 4, ".png") != 0)
+	no_ext = ft_strlen(path) - 4;
+	if (ft_strcmp(path + no_ext, ".png") != 0 && ft_strcmp(path + no_ext, ".xpm") != 0)
 		ft_error(E_SO_INV_EXT);
 	path = ft_map_search(map->textures.paths, "WE");
-	if (ft_strcmp(path + ft_strlen(path) - 4, ".png") != 0)
+	no_ext = ft_strlen(path) - 4;
+	if (ft_strcmp(path + no_ext, ".png") != 0 && ft_strcmp(path + no_ext, ".xpm") != 0)
 		ft_error(E_WE_INV_EXT);
 	path = ft_map_search(map->textures.paths, "EA");
-	if (ft_strcmp(path + ft_strlen(path) - 4, ".png") != 0)
+	no_ext = ft_strlen(path) - 4;
+	if (ft_strcmp(path + no_ext, ".png") != 0 && ft_strcmp(path + no_ext, ".xpm") != 0)
 		ft_error(E_EA_INV_EXT);
 }
 
