@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 15:10:08 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/03 11:24:16 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/03 12:29:14 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,6 @@ static void	fill_matrix(t_map *map)
 
 void	handle_map_matrix(t_map *map)
 {
-	if (!map->height)
-		ft_error(E_EMPTY_MAP);
 	map->matrix = ft_gc_malloc(sizeof(char *) * (map->height + 1));
 	fill_matrix(map);
 	validate_map_chars(map->matrix);

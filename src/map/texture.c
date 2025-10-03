@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 15:06:00 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/03 10:49:37 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/03 12:29:42 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*sanitize_string(char *line)
 
 static void	set_texture(char *key, t_map *map, char *line)
 {
-	char *path;
+	char	*path;
 
 	if (ft_strncmp(line, key, 2) == 0)
 	{
@@ -60,17 +60,13 @@ static void	set_ceiling_and_floor(char *line, t_map *map)
 	}
 }
 
-static void valid_line(char *line, t_bool map_end)
+static void	valid_line(char *line, t_bool map_end)
 {
 	if (line[0] == '\n')
 		return ;
-	if (ft_strncmp(line, "NO", 2)
-		&& ft_strncmp(line, "SO", 2)
-		&& ft_strncmp(line, "WE", 2)
-		&& ft_strncmp(line, "EA", 2)
-		&& line[0] != 'F'
-		&& line[0] != 'C'
-		&& !has_map_char(line))
+	if (ft_strncmp(line, "NO", 2) && ft_strncmp(line, "SO", 2)
+		&& ft_strncmp(line, "WE", 2) && ft_strncmp(line, "EA", 2)
+		&& line[0] != 'F' && line[0] != 'C' && !has_map_char(line))
 	{
 		add_error_context(ft_strdup(line));
 		ft_error(E_INVALID_ELEMENT);
@@ -113,6 +109,8 @@ void	handle_map_textures(t_map *map)
 	if (map->fd < 0)
 		ft_error(E_OPEN_FAILED);
 	fill_texture_paths(map);
+	if (!map->height)
+		ft_error(E_EMPTY_MAP);
 	close_and_clear(map->fd);
 	map->fd = 0;
 	valid_textures(map);
