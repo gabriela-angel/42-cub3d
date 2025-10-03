@@ -16,7 +16,7 @@ CYAN = \033[36;1;3;208m
 # ===========================================================================
 
 CFLAGS := -Wall -Wextra -Werror -g3
-OFLAGS := -Ofast -fno-stack-protector -ffast-math -Wunreachable-code
+OFLAGS := -fno-stack-protector -ffast-math -Wunreachable-code -O0
 LIBFLAGS := -ldl -lglfw -pthread -lm
 VALGRIND_LOG := valgrind.log
 

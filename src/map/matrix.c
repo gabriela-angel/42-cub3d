@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 15:10:08 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/02 16:48:19 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/03 11:24:16 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@ t_bool	has_map_char(char *line)
 	return (ft_strchr(line, '1') || ft_strchr(line, '0'));
 }
 
-static void	validate_map_matrix(char **matrix)
+static void	validate_map_chars(char **matrix)
 {
 	size_t	i;
 	size_t	j;
+	char	*error;
 
 	i = 0;
 	while (matrix[i])
@@ -36,7 +37,12 @@ static void	validate_map_matrix(char **matrix)
 		while (matrix[i][j])
 		{
 			if (!ft_strchr("\t 01NSEW", matrix[i][j]))
+			{
+				error = ft_strdup("Invalid character: " C_YEL "x" C_RED ".");
+				error[26] = matrix[i][j];
+				add_error_context(error);
 				ft_error(E_INVALID_MAP_CHAR);
+			}
 			j++;
 		}
 		i++;
@@ -76,5 +82,5 @@ void	handle_map_matrix(t_map *map)
 		ft_error(E_EMPTY_MAP);
 	map->matrix = ft_gc_malloc(sizeof(char *) * (map->height + 1));
 	fill_matrix(map);
-	validate_map_matrix(map->matrix);
+	validate_map_chars(map->matrix);
 }

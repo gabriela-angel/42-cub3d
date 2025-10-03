@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 15:06:00 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/02 17:23:57 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/03 10:49:37 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,18 @@ char	*sanitize_string(char *line)
 
 static void	set_texture(char *key, t_map *map, char *line)
 {
+	char *path;
+
 	if (ft_strncmp(line, key, 2) == 0)
 	{
 		if (ft_map_search(map->textures.paths, key))
+		{
+			add_error_context(ft_strdup(key));
 			ft_error(E_TEX_DUP);
-		ft_map_insert(map->textures.paths, key, trim(line + 2));
+		}
+		path = trim(line + 2);
+		path[ft_strlen(path) - 1] = '\0';
+		ft_map_insert(map->textures.paths, key, path);
 	}
 }
 
@@ -62,7 +69,8 @@ static void valid_line(char *line, t_bool map_end)
 		&& ft_strncmp(line, "WE", 2)
 		&& ft_strncmp(line, "EA", 2)
 		&& line[0] != 'F'
-		&& line[0] != 'C')
+		&& line[0] != 'C'
+		&& !has_map_char(line))
 	{
 		add_error_context(ft_strdup(line));
 		ft_error(E_INVALID_ELEMENT);

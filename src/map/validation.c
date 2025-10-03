@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 13:39:10 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/01 19:03:58 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/03 10:59:53 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ static void	check_files_accessible(t_map *map)
 	paths[3] = ft_map_search(map->textures.paths, "EA");
 	paths[4] = NULL;
 	error = try_open(paths);
+	if (error != 0)
+		add_error_context(ft_strdup(strerror(errno)));
 	if (error == 1)
 		ft_error(E_NO_FILE);
 	else if (error == 2)
