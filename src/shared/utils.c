@@ -6,11 +6,20 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 14:07:52 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/03 12:20:03 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/03 13:26:56 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+t_bool	has_image_extension(char *path)
+{
+	ssize_t	no_ext;
+
+	no_ext = ft_strlen(path) - 4;
+	return (ft_strcmp(path + no_ext, ".png") == 0
+		|| ft_strcmp(path + no_ext, ".xpm") == 0);
+}
 
 char	*trim(char *str)
 {
@@ -25,6 +34,21 @@ char	*trim(char *str)
 		end--;
 	str[end + 1] = '\0';
 	return (&str[start]);
+}
+
+char	*sanitize_string(char *line)
+{
+	size_t	i;
+
+	i = 0;
+	line = trim(line);
+	while (line[i])
+	{
+		if (!ft_isascii(line[i]))
+			ft_error(E_INVALID_FILE_CHAR);
+		i++;
+	}
+	return (line);
 }
 
 static t_bool	is_valid_rgbs(char **rgb)
@@ -66,7 +90,8 @@ uint32_t	rgb_to_int(char *str)
 		add_error_context(ft_strdup("\n\tExample: C 120,0,10"));
 		ft_error(E_INVALID_RGB_VALUE);
 	}
-	color = (ft_atoi(rgb[0]) << 24) | (ft_atoi(rgb[1]) << 16) | (ft_atoi(rgb[2]) << 8) | 0xFF;
+	color = (ft_atoi(rgb[0]) << 24) | (ft_atoi(rgb[1]) << 16)
+		| (ft_atoi(rgb[2]) << 8) | 0xFF;
 	ft_free_matrix((void **)rgb, free);
 	return (color);
 }

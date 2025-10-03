@@ -6,26 +6,11 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 15:06:00 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/03 12:29:42 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/03 13:25:26 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-char	*sanitize_string(char *line)
-{
-	size_t	i;
-
-	i = 0;
-	line = trim(line);
-	while (line[i])
-	{
-		if (!ft_isascii(line[i]))
-			ft_error(E_INVALID_FILE_CHAR);
-		i++;
-	}
-	return (line);
-}
 
 static void	set_texture(char *key, t_map *map, char *line)
 {

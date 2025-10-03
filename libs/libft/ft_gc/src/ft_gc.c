@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 09:40:14 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/08/11 21:00:13 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/03 13:14:01 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,18 @@ void	*ft_gc_malloc(size_t size)
 	void	*ptr;
 
 	ctx = get_global_ctx();
-
 	ptr = ft_calloc(1, size);
 	if (!ptr)
 		return (NULL);
-
 	new_node = ft_calloc(1, sizeof(t_ctx));
 	if (!new_node)
 	{
 		free(ptr);
 		return (NULL);
 	}
-
 	new_node->ptr = ptr;
 	new_node->next = ctx->next;
 	ctx->next = new_node;
-
 	return (ptr);
 }
 
@@ -90,17 +86,14 @@ t_bool	ft_gc_add(void *ptr)
 	t_ctx	*new_node;
 
 	ctx = get_global_ctx();
-
 	new_node = ft_calloc(1, sizeof(t_ctx));
 	if (!new_node)
 	{
 		free(ptr);
 		return (FALSE);
 	}
-
 	new_node->ptr = ptr;
 	new_node->next = ctx->next;
 	ctx->next = new_node;
-
 	return (TRUE);
 }

@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 21:15:06 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/02 17:23:44 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/03 13:26:42 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ char				*sanitize_string(char *line);
 void				handle_map_textures(t_map *map);
 void				handle_map_matrix(t_map *map);
 t_bool				has_map_char(char *line);
-void	valid_textures(t_map *map);
+void				valid_textures(t_map *map);
+t_bool				has_image_extension(char *path);
 
 #endif
