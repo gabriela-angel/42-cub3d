@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 21:52:36 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/03 11:54:57 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/03 12:02:59 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,6 @@ static void	handle_map_errors(t_error code)
 
 void	ft_error(t_error code)
 {
-	printf("%i\n", code);
 	ft_printf_fd(2, C_RED C_BLD "Error.\n" C_RST);
 	handle_generic_errors(code);
 	handle_map_errors(code);
