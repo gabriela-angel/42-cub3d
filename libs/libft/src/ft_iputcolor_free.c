@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iputcolor.c                                     :+:      :+:    :+:   */
+/*   ft_iputcolor_free.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 18:04:27 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/06 19:33:07 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/06 19:34:57 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static size_t	ft_increment_if_ansi_code(char *str, size_t i)
 	return (new_i);
 }
 
-char	*ft_iputcolor(char *str, size_t i, const char *color)
+char	*ft_iputcolor_free(char *str, size_t i, const char *color)
 {
 	char	*colored_char;
 	char	*left_str;
@@ -56,5 +56,6 @@ char	*ft_iputcolor(char *str, size_t i, const char *color)
 	free(colored_char);
 	result = ft_strjoin_with_free(result, right_str);
 	free(right_str);
+	free(str);
 	return (result);
 }
