@@ -46,3 +46,43 @@
    fun:__pthread_once_slow
    ...
 }
+{
+ <MLX_CODAM_WRITEV>
+   Memcheck:Param
+   writev(vector[...])
+   ...
+   fun:XPutImage
+   ...
+}
+{
+ <MLX_CODAM_GRAPHICS>
+   Memcheck:Param
+   writev(vector[0])
+   ...
+   fun:_XSend
+   ...
+}
+{
+ <MLX_CODAM_GRAPHICS2>
+   Memcheck:Param
+   writev(vector[1])
+   ...
+   fun:_XSend
+   ...
+}
+{
+ <MLX_CODAM_GLFWCREATE>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   ...
+   fun:glfwCreateWindow
+   ...
+}
+{
+ <MLX_CODAM_GALLIUM>
+   Memcheck:Param
+   writev(vector[...])
+   ...
+   obj:*/libgallium-*.so
+   ...
+}
