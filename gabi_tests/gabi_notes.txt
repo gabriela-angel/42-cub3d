@@ -1,0 +1,18 @@
+Person A (Engine / Rendering lead)
+	Set up MLX (MiniLibX) window, event hooks, image buffer handling.
+	Basic key handling (move, rotate, exit).
+	Handle game loop (main loop that updates & renders).
+
+	◦ The left and right arrow keys of the keyboard must allow you to look left and
+right in the maze.
+	◦ The W, A, S, and D keys must allow you to move the point of view through
+the maze.
+	- Rotating screen when mouse moves
+
+	◦ Pressing ESC must close the window and quit the program cleanly. DONE
+	◦ Clicking on the red cross on the window’s frame must close the window and
+quit the program cleanly DONE
+
+
+
+- we gotta register the pos of the player

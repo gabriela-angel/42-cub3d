@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 20:17:56 by lcosta-g          #+#    #+#             */
-/*   Updated: 2025/09/30 22:53:05 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/05 21:28:45 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,9 @@ typedef struct s_ray
 	int step[2];
 	int hit;
 	int side;
+	int line_height;
+	int line_start;
+	int line_end;
 }	t_ray;
 
 
