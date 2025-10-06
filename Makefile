@@ -39,7 +39,7 @@ MLX_NAME := libmlx42.a
 #  =============================== CUB3D ===================================
 # ===========================================================================
 
-NAME = cub3d
+NAME = cub3D
 SRC_PATH = ./src/
 HEADER_PATH = ./include/
 BUILD_PATH = ./build/
@@ -142,7 +142,7 @@ valgrind: all
 	--track-origins=yes \
 	--log-file=$(VALGRIND_LOG) \
 	--suppressions=./MLX.supp \
-	./$(NAME)
+	./$(NAME) ${MAP}
 	@cat $(VALGRIND_LOG)
 
 .PHONY: all clean fclean re valgrind libft mlx print

@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 15:06:00 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/03 13:25:26 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/06 12:27:57 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static void	fill_texture_paths(t_map *map)
 		set_texture("EA", map, line);
 		set_ceiling_and_floor(line, map);
 		if (!map_end && has_map_char(tmp))
-			map->height++;
+			update_width_and_height(map, ft_strlen(tmp));
 		else if (map->height)
 			map_end = TRUE;
 		free(tmp);

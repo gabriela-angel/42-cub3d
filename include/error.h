@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 13:42:01 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/03 13:37:04 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/06 13:38:10 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@
 // Error codes for the application
 typedef enum e_error
 {
-	E_INVALID_ARGS = 1,
+	E_SUCCESS = 0,
+
+	E_INVALID_ARGS,
 	E_OPEN_FAILED,
 	E_MLX_INIT_FAILED,
 
