@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 13:28:14 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/06 13:43:52 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/06 13:56:00 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,8 @@ void	ft_error(t_error code)
 	if (get_global_mlx()->instance)
 		mlx_terminate(get_global_mlx()->instance);
 	ft_gc_clean_all();
-	exit(EXIT_FAILURE);
+	if (code == E_SUCCESS)
+		exit(EXIT_SUCCESS);
+	else
+		exit(EXIT_FAILURE);
 }
