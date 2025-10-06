@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 08:19:56 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/03 11:45:45 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/06 18:37:33 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,18 @@
 
 // RESET (to reset any previous styles)
 # define C_RST "\033[0m"
+
+typedef struct s_colorinfo
+{
+	char		*result;
+	size_t		str_len;
+	size_t		colored_part_len;
+}				t_color_info;
+
+// Inserts ANSI color into a string at a specified index to color ONE character
+// 'str' is the original string
+// 'i' is the char index where the color should be applied
+// 'color' is the ANSI color code to apply (e.g., C_RED, C_GRN)
+t_color_info	ft_iputcolor(char *str, size_t i, const char *color);
 
 #endif

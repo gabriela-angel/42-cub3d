@@ -61,6 +61,7 @@ LIB_SOURCES = \
 	ft_realloc.c \
 	ft_recalloc.c \
 	ft_striteri.c \
+	ft_iputcolor.c \
 	ft_putnbr_fd.c \
 	ft_putstr_fd.c \
 	ft_atoi_base.c \
