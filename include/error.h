@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 13:42:01 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/06 13:38:10 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/06 17:57:44 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <errno.h>
 # include <string.h>
+# include "map.h"
 
 // Error codes for the application
 typedef enum e_error
@@ -58,12 +59,18 @@ typedef enum e_error
 
 	E_INVALID_RGB_VALUE,
 	E_INVALID_RGB_FIELDS,
-}		t_error;
+}			t_error;
 
-void	ft_error(t_error code);
-void	print_error(char *message);
-void	add_error_context(char *message);
-void	handle_generic_errors(t_error code);
-void	handle_map_errors(t_error code);
+typedef struct s_flood_errors
+{
+	t_point	*points;
+	size_t	count;
+}			t_flood_errors;
+
+void		ft_error(t_error code);
+void		print_error(char *message);
+void		add_error_context(char *message);
+void		handle_generic_errors(t_error code);
+void		handle_map_errors(t_error code);
 
 #endif

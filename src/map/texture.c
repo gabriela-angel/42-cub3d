@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 15:06:00 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/06 12:27:57 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/06 20:02:49 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static void	fill_texture_paths(t_map *map)
 		if (!line)
 			break ;
 		tmp = line;
-		line = sanitize_string(line);
+		line = trim(line);
 		valid_line(line, map_end);
 		set_texture("NO", map, line);
 		set_texture("SO", map, line);

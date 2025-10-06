@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 14:07:52 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/03 13:26:56 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/06 20:02:29 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,6 @@ char	*trim(char *str)
 		end--;
 	str[end + 1] = '\0';
 	return (&str[start]);
-}
-
-char	*sanitize_string(char *line)
-{
-	size_t	i;
-
-	i = 0;
-	line = trim(line);
-	while (line[i])
-	{
-		if (!ft_isascii(line[i]))
-			ft_error(E_INVALID_FILE_CHAR);
-		i++;
-	}
-	return (line);
 }
 
 static t_bool	is_valid_rgbs(char **rgb)

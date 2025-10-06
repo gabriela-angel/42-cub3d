@@ -6,15 +6,15 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 18:17:01 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/06 12:28:16 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/06 19:58:04 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void update_width_and_height(t_map *map, size_t line_length)
+void	update_width_and_height(t_map *map, size_t line_length)
 {
-	size_t new_width;
+	size_t	new_width;
 
 	new_width = line_length - 1;
 	if (new_width > map->width)
@@ -22,23 +22,33 @@ void update_width_and_height(t_map *map, size_t line_length)
 	map->height++;
 }
 
-static void	check_map_path(char *map_path)
+static void	check_file_content(char *map_path)
 {
-	char	*tmp;
+	char	*line;
 	int		fd;
+	size_t	i;
 
-	if (ft_strcmp(map_path + ft_strlen(map_path) - 4, ".cub") != 0)
-		ft_error(E_INVALID_MAP_NAME);
 	fd = open(map_path, O_RDONLY);
 	if (fd == -1)
 		ft_error(E_OPEN_FAILED);
-	tmp = get_next_line(fd);
-	if (!tmp)
+	line = get_next_line(fd);
+	if (!line)
 	{
 		close(fd);
 		ft_error(E_EMPTY_MAP_FILE);
 	}
-	free(tmp);
+	while (line)
+	{
+		i = 0;
+		while (line[i])
+		{
+			if (!ft_isascii(line[i]))
+				ft_error(E_INVALID_FILE_CHAR);
+			i++;
+		}
+		free(line);
+		line = get_next_line(fd);
+	}
 	close_and_clear(fd);
 }
 
@@ -55,6 +65,8 @@ static void	parse_map(char *map_path)
 
 void	ft_init_map(char *map_path)
 {
-	check_map_path(map_path);
+	if (ft_strcmp(map_path + ft_strlen(map_path) - 4, ".cub") != 0)
+		ft_error(E_INVALID_MAP_NAME);
+	check_file_content(map_path);
 	parse_map(map_path);
 }
