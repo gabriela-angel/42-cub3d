@@ -86,3 +86,79 @@
    obj:*/libgallium-*.so
    ...
 }
+{
+ <MLX_CODAM_WRITEV_XCB>
+   Memcheck:Param
+   writev(vector[0])
+   fun:__writev
+   fun:writev
+   ...
+   fun:xcb_writev
+   ...
+}
+{
+ <MLX_CODAM_WRITEV_XCB_1>
+   Memcheck:Param
+   writev(vector[1])
+   fun:__writev
+   fun:writev
+   ...
+   fun:xcb_writev
+   ...
+}
+{
+ <MLX_CODAM_WRITEV_MESA>
+   Memcheck:Param
+   writev(vector[0])
+   ...
+   obj:*/libGLX_mesa.so*
+   ...
+}
+{
+ <MLX_CODAM_WRITEV_MESA_1>
+   Memcheck:Param
+   writev(vector[1])
+   ...
+   obj:*/libGLX_mesa.so*
+   ...
+}
+{
+ <MLX_CODAM_STILL_REACHABLE_X11>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   obj:*/libX11.so*
+   ...
+}
+{
+ <MLX_CODAM_STILL_REACHABLE_LLVM>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   obj:*/libLLVM.so*
+   ...
+}
+{
+ <MLX_CODAM_STILL_REACHABLE_GLFW>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:glfwInit
+   ...
+}
+{
+ <MLX_CODAM_INDIRECT_GLFWCREATE>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   ...
+   fun:glfwCreateWindow
+   ...
+}
+{
+ <MLX_CODAM_INDIRECT_MLX>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   ...
+   fun:mlx_init
+   ...
+}
