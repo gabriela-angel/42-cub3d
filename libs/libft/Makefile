@@ -61,13 +61,15 @@ LIB_SOURCES = \
 	ft_realloc.c \
 	ft_recalloc.c \
 	ft_striteri.c \
+	ft_iputcolor.c \
 	ft_putnbr_fd.c \
 	ft_putstr_fd.c \
 	ft_atoi_base.c \
 	ft_putendl_fd.c \
 	ft_putchar_fd.c \
 	ft_next_prime.c \
-	ft_free_matrix.c
+	ft_free_matrix.c \
+	ft_iputcolor_free.c
 
 LIB_OBJECTS = $(addprefix $(LIB_BIN_PATH), $(LIB_SOURCES:%.c=%.o))
 

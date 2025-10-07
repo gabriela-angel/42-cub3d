@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 11:29:34 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/04/07 15:58:50 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/01 15:17:19 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,8 @@ void	ft_map_destroy(t_hash_table *table)
 	t_h_item	*next;
 
 	i = 0;
+	if (!table)
+		return ;
 	while (i < table->size)
 	{
 		tmp = table->items[i];

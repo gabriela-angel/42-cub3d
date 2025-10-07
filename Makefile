@@ -16,7 +16,7 @@ CYAN = \033[36;1;3;208m
 # ===========================================================================
 
 CFLAGS := -Wall -Wextra -Werror -g3
-OFLAGS := -Ofast -fno-stack-protector -ffast-math -Wunreachable-code
+OFLAGS := -fno-stack-protector -ffast-math -Wunreachable-code -O0
 LIBFLAGS := -ldl -lglfw -pthread -lm
 VALGRIND_LOG := valgrind.log
 
@@ -39,18 +39,31 @@ MLX_NAME := libmlx42.a
 #  =============================== CUB3D ===================================
 # ===========================================================================
 
-NAME = cub3d
+NAME = cub3D
 SRC_PATH = ./src/
 HEADER_PATH = ./include/
 BUILD_PATH = ./build/
 
-GLOBAL_PATH = ./global/
+ERRORS_FOLDER = ./errors/
+SHARED_FOLDER = ./shared/
+MAP_FOLDER = ./map/
+MLX_FOLDER = ./mlx/
 
 FILES = \
 	main.c \
-	init.c \
-	error.c \
-	$(GLOBAL_PATH)singleton.c \
+	$(ERRORS_FOLDER)map.c \
+	$(ERRORS_FOLDER)error.c \
+	$(ERRORS_FOLDER)generic.c \
+	\
+	$(MAP_FOLDER)map.c \
+	$(MAP_FOLDER)matrix.c \
+	$(MAP_FOLDER)texture.c \
+	$(MAP_FOLDER)validation.c \
+	\
+	$(MLX_FOLDER)mlx.c \
+	\
+	$(SHARED_FOLDER)utils.c \
+	$(SHARED_FOLDER)global.c \
 
 OBJS = $(addprefix $(BUILD_PATH), $(FILES:%.c=%.o))
 
@@ -78,7 +91,7 @@ ifeq ($(wildcard $(LIB_PATH)/$(LIB_NAME)),)
 endif
 
 $(BUILD_PATH):
-	@mkdir -p $(BUILD_PATH)${GLOBAL_PATH}
+	@mkdir -p $(dir $(OBJS))
 
 print:
 ifeq ($(wildcard $(NAME)),)
@@ -94,7 +107,7 @@ $(NAME): $(OBJS) $(HEADER_PATH)cub3d.h
 	@printf "$(UP)$(CUT)"
 	@printf "$(GREEN)[Builded]$(RESET) $(NAME)...\n"
 	@printf "$(CYAN)------ --------------------------------------------- ------$(RESET)\n"
-	@printf "$(CYAN)------| MINISHELL executable was created successfully!! |------$(RESET)\n"
+	@printf "$(CYAN)------| CUB3D executable was created successfully!! |------$(RESET)\n"
 	@printf "$(CYAN)------ --------------------------------------------- ------$(RESET)\n"
 	@echo " "
 
@@ -129,7 +142,7 @@ valgrind: all
 	--track-origins=yes \
 	--log-file=$(VALGRIND_LOG) \
 	--suppressions=./MLX.supp \
-	./$(NAME)
+	./$(NAME) ${MAP}
 	@cat $(VALGRIND_LOG)
 
 .PHONY: all clean fclean re valgrind libft mlx print

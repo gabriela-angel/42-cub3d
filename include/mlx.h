@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   mlx.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/11 21:52:36 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/08/11 22:08:31 by lhenriqu         ###   ########.fr       */
+/*   Created: 2025/09/27 13:44:39 by lhenriqu          #+#    #+#             */
+/*   Updated: 2025/09/27 13:48:09 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#ifndef MLX_H
+# define MLX_H
 
-static void print_error(char *message)
-{
-	ft_printf_fd(2, C_RED C_BLD "Error: " C_RST C_RED "%s\n" C_RST, message);
-}
+# include "../libs/MLX/include/MLX42/MLX42.h"
 
-void	ft_error(t_error code)
+typedef struct s_mlx
 {
-	if (code == E_MLX_INIT_FAILED)
-		print_error("Failed to initialize MLX.");
-    ft_gc_clean_all();
-	exit(EXIT_FAILURE);
-}
+	mlx_t	*instance;
+}			t_mlx;
+
+t_mlx		*get_global_mlx(void);
+void		ft_init_mlx(void);
+
+#endif
