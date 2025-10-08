@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 13:28:47 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/03 13:36:21 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/08 19:42:45 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,13 @@ static void	handle_texture_dup(t_error code)
 static void	handle_texture_file_errors(t_error code)
 {
 	if (code == E_NO_INV_EXT)
-		print_error("\tNO texture file must be a "
-			C_YEL ".png/.xpm" C_RED " file.");
+		print_error("\tNO texture file must be " C_YEL ".png/.xpm" C_RED ".");
 	else if (code == E_SO_INV_EXT)
-		print_error("\tSO texture file must be a "
-			C_YEL ".png/.xpm" C_RED " file.");
+		print_error("\tSO texture file must be " C_YEL ".png/.xpm" C_RED ".");
 	else if (code == E_WE_INV_EXT)
-		print_error("\tWE texture file must be a "
-			C_YEL ".png/.xpm" C_RED " file.");
+		print_error("\tWE texture file must be " C_YEL ".png/.xpm" C_RED ".");
 	else if (code == E_EA_INV_EXT)
-		print_error("\tEA texture file must be a "
-			C_YEL ".png/.xpm" C_RED " file.");
+		print_error("\tEA texture file must be " C_YEL ".png/.xpm" C_RED ".");
 	else if (code == E_NO_FILE)
 		print_error("\tNO texture file could not be opened: ");
 	else if (code == E_SO_FILE)
@@ -62,10 +58,20 @@ static void	handle_texture_file_errors(t_error code)
 		print_error("\tEA texture file could not be opened: ");
 }
 
+void	handle_map_content_errors(t_error code)
+{
+	if (code == E_MAP_NOT_CLOSED)
+		print_flood_error();
+	if (code == E_MULTIPLE_PLAYER)
+		print_error("\tMap contains multiple player start positions.");
+	else if (code == E_NO_PLAYER)
+		print_error("\tMap must contain one player start position.");
+}
+
 void	handle_map_errors(t_error code)
 {
 	handle_texture_miss(code);
 	handle_texture_dup(code);
 	handle_texture_file_errors(code);
-	// handle_map_content_errors(code);
+	handle_map_content_errors(code);
 }
