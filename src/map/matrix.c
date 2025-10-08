@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 15:10:08 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/08 15:26:02 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/08 18:07:29 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,19 +60,17 @@ static void	fill_matrix(t_map *map)
 		line = get_next_line(map->fd);
 		if (has_map_char(line))
 			break ;
-		free(line);
 	}
 	i = 0;
 	while (i < map->height)
 	{
 		map->matrix[i] = gc_malloc(map->width + 1);
 		ft_memmove(map->matrix[i], line, ft_strlen(line) - 1);
-		free(line); // Free the current line before getting the next one
 		i++;
-		if (i < map->height) // Only get next line if we need it
+		if (i < map->height)
 			line = get_next_line(map->fd);
 	}
-	close_and_clear(map->fd);
+	close_and_clear(&map->fd);
 }
 
 void	normalize_map_matrix(t_map *map)

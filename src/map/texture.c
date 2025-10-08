@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 15:06:00 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/06 20:02:49 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/08 18:09:59 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void	valid_line(char *line, t_bool map_end)
 static void	fill_texture_paths(t_map *map)
 {
 	char	*line;
-	char	*tmp;
+	char	*trimmed;
 	t_bool	map_end;
 
 	map_end = FALSE;
@@ -72,19 +72,17 @@ static void	fill_texture_paths(t_map *map)
 		line = get_next_line(map->fd);
 		if (!line)
 			break ;
-		tmp = line;
-		line = trim(line);
-		valid_line(line, map_end);
-		set_texture("NO", map, line);
-		set_texture("SO", map, line);
-		set_texture("WE", map, line);
-		set_texture("EA", map, line);
-		set_ceiling_and_floor(line, map);
-		if (!map_end && has_map_char(tmp))
-			update_width_and_height(map, ft_strlen(tmp));
+		trimmed = trim(line);
+		valid_line(trimmed, map_end);
+		set_texture("NO", map, trimmed);
+		set_texture("SO", map, trimmed);
+		set_texture("WE", map, trimmed);
+		set_texture("EA", map, trimmed);
+		set_ceiling_and_floor(trimmed, map);
+		if (!map_end && has_map_char(line))
+			update_width_and_height(map, ft_strlen(line));
 		else if (map->height)
 			map_end = TRUE;
-		free(tmp);
 	}
 }
 
@@ -94,9 +92,8 @@ void	handle_map_textures(t_map *map)
 	if (map->fd < 0)
 		ft_error(E_OPEN_FAILED);
 	fill_texture_paths(map);
+	close_and_clear(&map->fd);
 	if (!map->height)
 		ft_error(E_EMPTY_MAP);
-	close_and_clear(map->fd);
-	map->fd = 0;
 	valid_textures(map);
 }
