@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_gc.c                                            :+:      :+:    :+:   */
+/*   ctx_list.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/10 09:40:14 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/08 13:23:30 by lhenriqu         ###   ########.fr       */
+/*   Created: 2025/10/08 13:29:18 by lhenriqu          #+#    #+#             */
+/*   Updated: 2025/10/08 15:21:20 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_gc.h"
 #include "ft_gc_utils.h"
 
-void	*gc_malloc(size_t size)
+t_ctx	*get_ctx_list(void)
 {
-	return (gc_malloc_ctx(NULL, size));
+	static t_ctx	ctx_list;
+
+	return (&ctx_list);
 }
 
-void	gc_free(void *ptr)
+void	terminate_gc(void)
 {
-	return (gc_free_ctx(NULL, ptr));
-}
+	t_ptrs_list	*ptrs;
 
-void	gc_clean_all(void)
-{
-	return (gc_clean_all_ctx(NULL));
-}
-
-t_bool	gc_add(void *ptr)
-{
-	return (gc_add_ctx(NULL, ptr));
+	ptrs = get_ctx_list()->ptrs;
+	while (ptrs)
+	{
+		gc_destroy_ctx((t_ctx *)ptrs->ptr);
+		ptrs = ptrs->next;
+	}
+	get_ctx_list()->ptrs = NULL;
+	get_ctx_list()->list_size = 0;
+	gc_clean_all();
 }

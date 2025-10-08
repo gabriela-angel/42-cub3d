@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_gc.c                                            :+:      :+:    :+:   */
+/*   ft_gc_utils.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/10 09:40:14 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/08 13:23:30 by lhenriqu         ###   ########.fr       */
+/*   Created: 2025/10/08 12:13:27 by lhenriqu          #+#    #+#             */
+/*   Updated: 2025/10/08 15:22:14 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_gc.h"
-#include "ft_gc_utils.h"
+#ifndef FT_GC_UTILS_H
+# define FT_GC_UTILS_H
 
-void	*gc_malloc(size_t size)
+// Linked list to hold the pointers
+typedef struct s_ptrs_list
 {
-	return (gc_malloc_ctx(NULL, size));
-}
+	void				*ptr;
+	struct s_ptrs_list	*next;
+}						t_ptrs_list;
 
-void	gc_free(void *ptr)
+// CTX structure to hold the list of pointers
+typedef struct s_ctx
 {
-	return (gc_free_ctx(NULL, ptr));
-}
+	t_ptrs_list			*ptrs;
+	size_t				list_size;
+}						t_ctx;
 
-void	gc_clean_all(void)
-{
-	return (gc_clean_all_ctx(NULL));
-}
+// Function to get the CTX list to be freed when terminate_gc is called
+t_ctx	*get_ctx_list(void);
 
-t_bool	gc_add(void *ptr)
-{
-	return (gc_add_ctx(NULL, ptr));
-}
+#endif

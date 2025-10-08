@@ -145,7 +145,10 @@ GC_HEADER_PATH = ./ft_gc/includes/
 GC_BIN_PATH = ./ft_gc/build/
 
 GC_SOURCES = \
-	ft_gc.c
+	ft_gc_ctx.c \
+	ctx_list.c \
+	ft_gc.c \
+	ctx.c
 
 GC_OBJECTS = $(addprefix $(GC_BIN_PATH), $(GC_SOURCES:%.c=%.o))
 
