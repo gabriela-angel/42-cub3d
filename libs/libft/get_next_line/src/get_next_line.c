@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 10:28:40 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/05/02 21:43:58 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/08 15:48:06 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ char	*get_next_line(int fd)
 	line = NULL;
 	line = get_line(buffer[fd]);
 	buffer[fd] = get_rest(buffer[fd]);
+	gc_add_ctx(get_gnl_ctx(fd), line);
 	return (line);
 }
 

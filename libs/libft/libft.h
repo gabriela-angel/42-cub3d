@@ -98,6 +98,9 @@ char			*ft_strrchr(const char *s, int c);
 // (malloc) Concatenates two strings into a new string
 char			*ft_strjoin(char const *s1, char const *s2);
 
+// (malloc) Concatenates two strings into a new string and frees s1 parameter
+char			*ft_strjoin_with_free(char *s1, char *s2);
+
 // (malloc) Removes leading and trailing characters from a string
 char			*ft_strtrim(char const *s1, char const *set);
 

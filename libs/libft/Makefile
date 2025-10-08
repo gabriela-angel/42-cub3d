@@ -69,7 +69,8 @@ LIB_SOURCES = \
 	ft_putchar_fd.c \
 	ft_next_prime.c \
 	ft_free_matrix.c \
-	ft_iputcolor_free.c
+	ft_iputcolor_free.c \
+	ft_strjoin_with_free.c
 
 LIB_OBJECTS = $(addprefix $(LIB_BIN_PATH), $(LIB_SOURCES:%.c=%.o))
 
@@ -84,6 +85,7 @@ GNL_BIN_PATH = ./get_next_line/build/
 
 GNL_SOURCES = \
 	get_next_line_utils.c \
+	garbage_collector.c \
 	get_next_line.c
 
 GNL_OBJECTS = $(addprefix $(GNL_BIN_PATH), $(GNL_SOURCES:%.c=%.o))
