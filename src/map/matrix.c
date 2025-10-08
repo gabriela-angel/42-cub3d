@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 15:10:08 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/06 20:02:43 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/08 15:26:02 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void	fill_matrix(t_map *map)
 	i = 0;
 	while (i < map->height)
 	{
-		map->matrix[i] = ft_gc_malloc(map->width + 1);
+		map->matrix[i] = gc_malloc(map->width + 1);
 		ft_memmove(map->matrix[i], line, ft_strlen(line) - 1);
 		free(line); // Free the current line before getting the next one
 		i++;
@@ -105,11 +105,11 @@ static char	**clone_matrix(char **matrix)
 	while (matrix[height])
 		height++;
 	width = ft_strlen(matrix[0]);
-	clone = ft_gc_malloc(sizeof(char *) * (height + 1));
+	clone = gc_malloc(sizeof(char *) * (height + 1));
 	i = 0;
 	while (i < height)
 	{
-		clone[i] = ft_gc_malloc(sizeof(char) * (width + 1));
+		clone[i] = gc_malloc(sizeof(char) * (width + 1));
 		ft_memmove(clone[i], matrix[i], width);
 		i++;
 	}
@@ -279,7 +279,7 @@ static void	print_map(t_map *map)
 
 void	handle_map_matrix(t_map *map)
 {
-	map->matrix = ft_gc_malloc(sizeof(char *) * (map->height + 1));
+	map->matrix = gc_malloc(sizeof(char *) * (map->height + 1));
 	fill_matrix(map);
 	validate_map_chars(map->matrix);
 	normalize_map_matrix(map);

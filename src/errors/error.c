@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 13:28:14 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/06 13:56:00 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/08 15:25:19 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	add_error_context(char *message)
 {
-	ft_gc_add(message);
+	gc_add(message);
 	get_global_cube()->error_context = message;
 }
 
@@ -35,7 +35,7 @@ void	ft_error(t_error code)
 	ft_map_destroy(get_global_cube()->map.textures.paths);
 	if (get_global_mlx()->instance)
 		mlx_terminate(get_global_mlx()->instance);
-	ft_gc_clean_all();
+	gc_clean_all();
 	if (code == E_SUCCESS)
 		exit(EXIT_SUCCESS);
 	else
