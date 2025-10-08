@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 10:30:48 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/08 16:17:46 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/08 17:54:07 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,11 @@
 //   is freed, so avoid accessing the returned line afterward.
 char	*get_next_line(int fd);
 
-// Closes the file descriptor and clears its associated static buffer
-void	close_and_clear(int fd);
+// Works together with get_next_line.
+// Performs the following actions:
+// 1. Closes the specified file descriptor.
+// 2. Frees GNL’s internal buffers and any lines previously returned by GNL.
+// 3. On success, sets the given fd variable to 0.
+void	close_and_clear(int *fd);
 
 #endif
