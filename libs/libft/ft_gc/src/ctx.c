@@ -6,13 +6,13 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 20:05:19 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/08 15:13:02 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/08 15:41:23 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_gc.h"
 
-t_ctx	*gc_create_ctx(void)
+t_ctx	*gc_create_ctx(t_bool auto_managed)
 {
 	t_ctx	*new_ctx;
 
@@ -21,7 +21,8 @@ t_ctx	*gc_create_ctx(void)
 		return (NULL);
 	new_ctx->ptrs = NULL;
 	new_ctx->list_size = 0;
-	gc_add_ctx(get_ctx_list(), new_ctx);
+	if (auto_managed)
+		gc_add_ctx(get_ctx_list(), new_ctx);
 	return (new_ctx);
 }
 

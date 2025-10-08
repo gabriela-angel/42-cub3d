@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 09:31:00 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/08 15:12:10 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/08 15:43:25 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,11 @@ t_bool	gc_add(void *ptr);
 	- gc_add_ctx
 	- gc_free_ctx
 	- gc_clean_all_ctx
+
+	If auto_managed is TRUE, the CTX will be automatically freed when
+	terminate_gc is called. If FALSE, you must call gc_destroy_ctx to free it.
 */
-t_ctx	*gc_create_ctx(void);
+t_ctx	*gc_create_ctx(t_bool auto_managed);
 
 /*
 	Destroy a custom CTX created with gc_create_ctx.
