@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 13:42:01 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/08 19:38:49 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/09 14:54:02 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void			add_flood_invalid_char(t_point point);
 void			print_errors(void);
 
 // matrix_errors.c
-void			print_flood_error(void);
+void			print_flood_error(char *message);
 void			flood_fill(char **mtx, size_t wdt, size_t hgt, t_point start);
 
 #endif

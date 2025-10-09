@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 18:20:33 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/08 19:33:15 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/09 14:41:57 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	flood_fill(char **mtx, size_t wdt, size_t hgt, t_point start)
 		return ;
 	if (mtx[start.y][start.x] == '1' || mtx[start.y][start.x] == '3')
 		return ;
-	if (mtx[start.y][start.x] == '0')
+	if (!(mtx[start.y][start.x] >= '1' && mtx[start.y][start.x] <= '3'))
 	{
 		add_flood_invalid_char(start);
 		return ;

@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 18:22:28 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/08 22:47:19 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/09 14:59:30 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,12 @@ static void	postprocess_and_print_matrix(char *matrix_str)
 	ft_printf("Matrix:\n%s\n", matrix_str);
 }
 
-void	print_flood_error(void)
+void	print_flood_error(char *message)
 {
 	t_map	*map;
 	char	*matrix_str;
 
+	ft_printf(C_CYA "\t%s\n" C_RST, message);
 	map = &get_global_cube()->map;
 	matrix_str = build_colored_matrix(map);
 	print_errors();

@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 13:28:47 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/08 19:42:45 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/09 14:54:16 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void	handle_texture_file_errors(t_error code)
 void	handle_map_content_errors(t_error code)
 {
 	if (code == E_MAP_NOT_CLOSED)
-		print_flood_error();
+		print_flood_error("Map is not closed/surrounded by walls.");
 	if (code == E_MULTIPLE_PLAYER)
 		print_error("\tMap contains multiple player start positions.");
 	else if (code == E_NO_PLAYER)
