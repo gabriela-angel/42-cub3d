@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 18:22:28 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/08 19:45:43 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/08 22:47:19 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,5 @@ void	print_flood_error(void)
 	print_errors();
 	postprocess_and_print_matrix(matrix_str);
 	free(matrix_str);
+	free(get_global_flood_errors()->points);
 }
