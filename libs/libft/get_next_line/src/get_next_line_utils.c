@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:12:52 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/08 21:48:33 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/09 19:51:24 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	clear_gnl_buffer(int fd)
 	{
 		if (buffer[fd])
 		{
-			free(buffer[fd]);
+			ft_free(buffer[fd]);
 			buffer[fd] = NULL;
 		}
 	}
@@ -58,7 +58,7 @@ void	clear_gnl_buffer(int fd)
 		{
 			if (buffer[i])
 			{
-				free(buffer[i]);
+				ft_free(buffer[i]);
 				buffer[i] = NULL;
 			}
 			i++;

@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 20:05:19 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/08 15:41:23 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/09 19:44:40 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_ctx	*gc_create_ctx(t_bool auto_managed)
 {
 	t_ctx	*new_ctx;
 
-	new_ctx = malloc(sizeof(t_ctx));
+	new_ctx = ft_malloc(sizeof(t_ctx));
 	if (!new_ctx)
 		return (NULL);
 	new_ctx->ptrs = NULL;

@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 15:50:18 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/08 15:51:13 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/09 19:39:48 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strjoin_with_free(char *s1, char *s2)
 
 	if (s1 == NULL)
 		s1 = ft_strdup("");
-	new_string = malloc((ft_strlen(s1) + ft_strlen(s2) + 1));
+	new_string = ft_malloc((ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (new_string == NULL)
 		return (NULL);
 	i = 0;
@@ -31,6 +31,6 @@ char	*ft_strjoin_with_free(char *s1, char *s2)
 	while (s2[i])
 		new_string[j++] = s2[i++];
 	new_string[j] = '\0';
-	free((char *)s1);
+	ft_free((char *)s1);
 	return (new_string);
 }

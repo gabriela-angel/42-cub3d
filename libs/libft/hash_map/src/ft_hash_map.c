@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 11:29:34 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/01 15:17:19 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/09 19:51:24 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_map_insert(t_hash_table *table, char *key, char *value)
 	{
 		if (tmp->key && !ft_strcmp(tmp->key, key))
 		{
-			free(tmp->value);
+			ft_free(tmp->value);
 			tmp->value = ft_strdup(value);
 			return ;
 		}
@@ -122,6 +122,6 @@ void	ft_map_destroy(t_hash_table *table)
 		}
 		i++;
 	}
-	free(table->items);
-	free(table);
+	ft_free(table->items);
+	ft_free(table);
 }

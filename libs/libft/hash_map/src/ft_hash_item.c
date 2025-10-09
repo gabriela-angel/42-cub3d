@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 13:31:23 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/03/12 11:08:43 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/09 19:51:24 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	free_item(t_h_item *item)
 {
 	if (item)
 	{
-		free(item->key);
-		free(item->value);
-		free(item);
+		ft_free(item->key);
+		ft_free(item->value);
+		ft_free(item);
 	}
 }
 

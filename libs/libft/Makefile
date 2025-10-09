@@ -20,7 +20,15 @@ LIB_SOURCES_PATH = ./src/
 LIB_HEADER_PATH = ./
 LIB_BIN_PATH = ./build/
 
+MALLOC_PATH = ./malloc/
+
 LIB_SOURCES = \
+	$(MALLOC_PATH)ft_free.c \
+	$(MALLOC_PATH)ft_malloc.c \
+	$(MALLOC_PATH)ft_calloc.c \
+	$(MALLOC_PATH)ft_realloc.c \
+	$(MALLOC_PATH)ft_recalloc.c \
+	$(MALLOC_PATH)ft_malloc_size.c \
 	ft_abs.c \
 	ft_itoa.c \
 	ft_atoi.c \
@@ -30,7 +38,6 @@ LIB_SOURCES = \
 	ft_split.c \
 	ft_atoui8.c \
 	ft_checkw.c \
-	ft_calloc.c \
 	ft_memset.c \
 	ft_strchr.c \
 	ft_strdup.c \
@@ -58,8 +65,6 @@ LIB_SOURCES = \
 	ft_strtrim.c \
 	ft_tolower.c \
 	ft_toupper.c \
-	ft_realloc.c \
-	ft_recalloc.c \
 	ft_striteri.c \
 	ft_iputcolor.c \
 	ft_putnbr_fd.c \
@@ -161,7 +166,7 @@ GC_OBJECTS = $(addprefix $(GC_BIN_PATH), $(GC_SOURCES:%.c=%.o))
 NAME := libft.a
 CFLAGS := -Wall -Wextra -Werror -g3
 
-all: $(LIB_BIN_PATH) $(NAME)
+all: mkdir $(LIB_BIN_PATH) $(NAME)
 
 $(LIB_BIN_PATH)%.o: $(LIB_SOURCES_PATH)%.c
 	@printf "$(YELLOW)[Compiling]$(RESET) $(WHITE)%s...$(RESET)\n" "$(notdir $(<))"
@@ -179,6 +184,9 @@ $(NAME): $(LIB_OBJECTS)
 
 $(LIB_BIN_PATH):
 	@mkdir -p $(LIB_BIN_PATH)
+
+mkdir:
+	@mkdir -p $(dir $(LIB_OBJECTS))
 
 get_next_line:
 	@make --no-print-directory \
@@ -243,4 +251,4 @@ build:
 	@make hash_map --no-print-directory
 	@make gc --no-print-directory
 
-.PHONY: all clean fclean re get_next_line ft_printf ft_printf_fd hash_map gc build
+.PHONY: all clean fclean re get_next_line ft_printf ft_printf_fd hash_map gc build mkdir

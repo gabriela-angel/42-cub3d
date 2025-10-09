@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 14:21:15 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/08 21:46:33 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/09 19:44:40 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "ft_gc_utils.h"
 
 /*
-	Malloc memory and add it to the specified CTX.
+	ft_malloc memory and add it to the specified CTX.
 
 	CTX ->			a group/buffer that can hold multiple pointers
 */

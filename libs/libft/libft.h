@@ -13,11 +13,24 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
+/* 
+			___       ___    ___        _______   ___________     
+			|  |      |  |   |  |       |  ____|  |___    ___|   
+			|  |      |  |   |  |       |  |___       |  |
+			|  |      |  |   |  |____   |  ____|      |  |
+			|  |___   |  |   |   __  |  |  |          |  |
+			|______|  |__|   |_______|  |__|          |__|
+
+
+			Created by lhenriqu - 2025
+*/
+
 # include <stdlib.h>
 # include <unistd.h>
 
 # include "colors.h"
-# include "./ft_bool.h"
+# include "ft_bool.h"
+# include "ft_malloc.h"
 # include "./ft_gc/includes/ft_gc.h"
 # include "./hash_map/includes/hash_map.h"
 # include "./ft_printf/includes/ft_printf.h"
@@ -83,10 +96,12 @@ int				ft_strncmp(const char *s1, const char *s2, size_t n);
 // Compares two blocks of memory byte by byte
 int				ft_memcmp(const void *m1, const void *m2, size_t n);
 
-// (malloc) Converts an integer to a string representation
+// (ft_malloc)
+// Converts an integer to a string representation
 char			*ft_itoa(int n);
 
-// (malloc) Duplicates a string (allocates memory and copies the string)
+// (ft_malloc)
+// Duplicates a string (allocates memory and copies the string)
 char			*ft_strdup(const char *s);
 
 // Finds the first occurrence of a character in a string
@@ -95,13 +110,16 @@ char			*ft_strchr(const char *s, int c);
 // Finds the last occurrence of a character in a string
 char			*ft_strrchr(const char *s, int c);
 
-// (malloc) Concatenates two strings into a new string
+// (ft_malloc)
+// Concatenates two strings into a new string
 char			*ft_strjoin(char const *s1, char const *s2);
 
-// (malloc) Concatenates two strings into a new string and frees s1 parameter
+// (ft_malloc)
+// Concatenates two strings into a new string and frees s1 parameter
 char			*ft_strjoin_with_free(char *s1, char *s2);
 
-// (malloc) Removes leading and trailing characters from a string
+// (ft_malloc)
+// Removes leading and trailing characters from a string
 char			*ft_strtrim(char const *s1, char const *set);
 
 // Finds the first occurrence of a substring (up to 'len' characters)
@@ -110,13 +128,16 @@ char			*ft_strnstr(const char *s1, const char *s2, size_t len);
 // Copies up to `n` characters from the string `src` into the buffer `dest`.
 char			*ft_strncpy(char *dest, const char *src, size_t n);
 
-// (malloc) Extracts a substring from a string
+// (ft_malloc)
+// Extracts a substring from a string
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 
-// (malloc) Applies a function to each character of a string, returning a string
+// (ft_malloc)
+// Applies a function to each character of a string, returning a string
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
-// (malloc) Splits a string into an array of strings based on a delimiter
+// (ft_malloc)
+// Splits a string into an array of strings based on a delimiter
 char			**ft_split(char const *s, char c);
 
 // Returns the length of a string (excluding the null-terminator)
@@ -127,15 +148,6 @@ size_t			ft_strlcat(char *dest, const char *src, size_t d_size);
 
 // Copies a string, ensuring the destination buffer does not overflow
 size_t			ft_strlcpy(char *dest, const char *src, size_t d_size);
-
-// Allocates memory and initializes them to zero
-void			*ft_calloc(size_t n, size_t size);
-
-// Reallocates memory and copies the old content to the new memory block
-void			*ft_realloc(void *ptr, size_t new_size, size_t old_size);
-
-// Reallocates using calloc and copies the old content to the new memory block
-void			*ft_recalloc(void *ptr, size_t new_size, size_t old_size);
 
 // Fills a block of memory with a specific byte value
 void			*ft_memset(void *b, int c, size_t len);

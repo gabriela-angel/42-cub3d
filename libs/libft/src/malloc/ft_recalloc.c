@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_recalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/12 22:19:39 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/09 19:34:57 by lhenriqu         ###   ########.fr       */
+/*   Created: 2025/03/11 09:35:45 by lhenriqu          #+#    #+#             */
+/*   Updated: 2025/10/09 19:51:24 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	*ft_recalloc(void *ptr, size_t new_size)
 {
-	size_t	i;
-	char	*str;
+	void	*new_ptr;
+	size_t	cpy_size;
+	size_t	old_size;
 
-	if (s1 == NULL && s2 == NULL)
+	old_size = ft_malloc_size(ptr);
+	if (!ptr)
+		return (ft_calloc(1, new_size));
+	if (new_size == old_size)
+		return (ptr);
+	if (new_size == 0)
+	{
+		ft_free(ptr);
 		return (NULL);
-	if (s1 == NULL)
-		return (ft_strdup(s2));
-	if (s2 == NULL)
-		return (ft_strdup(s1));
-	str = ft_malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
-	if (str == NULL)
+	}
+	if (new_size < old_size)
+		cpy_size = new_size;
+	else
+		cpy_size = old_size;
+	new_ptr = ft_calloc(1, new_size);
+	if (!new_ptr)
 		return (NULL);
-	i = 0;
-	while (*s1)
-		str[i++] = *s1++;
-	while (*s2)
-		str[i++] = *s2++;
-	str[i] = '\0';
-	return (str);
+	ft_memcpy(new_ptr, ptr, cpy_size);
+	ft_free(ptr);
+	return (new_ptr);
 }

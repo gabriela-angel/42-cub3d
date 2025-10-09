@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 12:38:00 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/08 21:44:38 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/09 19:51:24 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	*gc_malloc_ctx(t_ctx *ctx, size_t size)
 	new_node = ft_calloc(1, sizeof(t_ptrs_list));
 	if (!new_node)
 	{
-		free(ptr);
+		ft_free(ptr);
 		return (NULL);
 	}
 	new_node->ptr = ptr;
@@ -60,14 +60,14 @@ void	gc_free_ctx(t_ctx *ctx, void *ptr)
 				old->next = node->next;
 			else
 				ctx->ptrs = node->next;
-			free(node);
+			ft_free(node);
 			ctx->list_size--;
 			break ;
 		}
 		old = node;
 		node = node->next;
 	}
-	free(ptr);
+	ft_free(ptr);
 }
 
 void	gc_clean_all_ctx(t_ctx *ctx)
@@ -82,8 +82,8 @@ void	gc_clean_all_ctx(t_ctx *ctx)
 	{
 		old = node;
 		node = node->next;
-		free(old->ptr);
-		free(old);
+		ft_free(old->ptr);
+		ft_free(old);
 	}
 	ctx->ptrs = NULL;
 	ctx->list_size = 0;

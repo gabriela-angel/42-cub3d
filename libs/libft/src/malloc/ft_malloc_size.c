@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_malloc_size.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/12 13:47:30 by lhenriqu          #+#    #+#             */
-/*   Updated: 2024/11/29 12:20:48 by lhenriqu         ###   ########.fr       */
+/*   Created: 2025/10/09 19:29:34 by lhenriqu          #+#    #+#             */
+/*   Updated: 2025/10/09 19:29:59 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t n, size_t size)
+size_t	ft_malloc_size(void *ptr)
 {
-	void	*allocd_mem;
+	size_t	*size_ptr;
 
-	allocd_mem = (void *)malloc(n * size);
-	if (allocd_mem == NULL)
-		return (NULL);
-	ft_bzero(allocd_mem, n * size);
-	return (allocd_mem);
+	if (!ptr)
+		return (0);
+	size_ptr = (size_t *)ptr - 1;
+	return (*size_ptr);
 }

@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_malloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/11 14:57:18 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/09 19:35:12 by lhenriqu         ###   ########.fr       */
+/*   Created: 2025/10/09 19:00:18 by lhenriqu          #+#    #+#             */
+/*   Updated: 2025/10/09 19:53:45 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+void	*ft_malloc(size_t size)
 {
-	char	*ptr;
-	size_t	len;
-	size_t	i;
+	size_t	*real;
 
-	if (s == NULL)
-		return (NULL);
-	len = ft_strlen(s);
-	ptr = ft_malloc((len + 1) * sizeof(char));
-	if (ptr == NULL)
-		return (NULL);
-	i = 0;
-	while (i < len)
-	{
-		ptr[i] = s[i];
-		i++;
-	}
-	ptr[i] = '\0';
-	return (ptr);
+	real = malloc(size + sizeof(size_t));
+	*real = size;
+	return ((void *)(real + 1));
 }
