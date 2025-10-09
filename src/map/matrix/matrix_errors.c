@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 18:22:28 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/08 19:17:56 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/08 19:45:43 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	postprocess_and_print_matrix(char *matrix_str)
 	c2 = ft_strchr(matrix_str, '2');
 	while (c2)
 	{
-		*c2 = '0';
+		*c2 = ' ';
 		c2 = ft_strchr(c2 + 1, '2');
 	}
 	ft_printf("Matrix:\n%s\n", matrix_str);
