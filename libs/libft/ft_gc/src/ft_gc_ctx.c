@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 12:38:00 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/08 15:18:19 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/08 21:44:38 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	gc_free_ctx(t_ctx *ctx, void *ptr)
 	{
 		if (node->ptr == ptr)
 		{
-			free(node->ptr);
 			if (old)
 				old->next = node->next;
 			else

@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 14:21:15 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/08 15:19:55 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/08 21:46:33 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	*gc_malloc_ctx(t_ctx *ctx, size_t size);
 
 /*
 	Free ptr and remove it from the specified CTX. (low performance)
-
+	ptr is freed even if it is not in the CTX.
+	
 	CTX ->			a group/buffer that can hold multiple pointers
 */
 void	gc_free_ctx(t_ctx *ctx, void *ptr);

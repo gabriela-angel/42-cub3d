@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 09:31:00 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/08 15:43:25 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/08 21:45:54 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	*gc_malloc(size_t size);
 
 /*
 	Free ptr and remove it from the internal CTX of the GC. (low performance)
+	ptr is freed even if it is not in the internal CTX.
 
 	CTX ->			a group/buffer that can hold multiple pointers
 	GC ->			Garbage Collector
