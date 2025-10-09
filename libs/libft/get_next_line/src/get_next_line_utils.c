@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:12:52 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/08 17:40:50 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/08 21:48:33 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,12 @@ char	*get_nl_address(const char *s)
 
 void	close_and_clear(int *fd)
 {
-	if (!fd && *fd >= 0 && *fd < FD_MAX)
+	if (fd && *fd >= 0 && *fd < FD_MAX)
 	{
 		clear_gnl_buffer(*fd);
 		close(*fd);
 		gc_destroy_ctx(get_gnl_ctx(*fd));
+		clear_gnl_ctx(*fd);
 		*fd = 0;
 	}
 }

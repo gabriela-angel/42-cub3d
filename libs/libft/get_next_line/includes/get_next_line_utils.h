@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 15:57:24 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/08 17:10:52 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/08 21:48:21 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,8 @@ void					clear_gnl_buffer(int fd);
 // If it does not exist, it creates a new one.
 // Returns NULL if fd is invalid.
 t_ctx					*get_gnl_ctx(int fd);
+
+// Clears the garbage collector CTX pointer for the specified fd.
+void					clear_gnl_ctx(int fd);
 
 #endif
