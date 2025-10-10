@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 15:10:08 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/09 18:32:12 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/10 19:07:26 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,5 @@ void	handle_map_matrix(t_map *map)
 	validate_map_chars(map->matrix);
 	normalize_map_matrix(map);
 	validate_map_walls(map);
-	init_player();
+	// init_player();
 }

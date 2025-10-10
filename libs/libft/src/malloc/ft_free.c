@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 19:06:31 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/09 19:09:58 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/10 19:09:36 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void	ft_free(void *ptr)
 {
 	if (ptr)
-		free(ptr - 1);
+		free((size_t *)ptr - 1);
 }
