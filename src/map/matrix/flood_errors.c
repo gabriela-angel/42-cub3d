@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 18:45:10 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/08 19:46:23 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/09 20:32:47 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,14 @@ static t_bool	already_recorded(t_point point)
 void	add_flood_invalid_char(t_point point)
 {
 	t_flood_errors	*errors;
+	size_t			qnt;
 
 	if (already_recorded(point))
 		return ;
 	errors = get_global_flood_errors();
-	errors->points = ft_recalloc(errors->points, sizeof(t_point)
-			* (errors->count + 1), sizeof(t_point) * errors->count);
-	errors->points[errors->count] = point;
+	qnt = errors->count;
+	errors->points = ft_recalloc(errors->points, sizeof(t_point) * (qnt + 1));
+	errors->points[qnt] = point;
 	errors->count++;
 }
 

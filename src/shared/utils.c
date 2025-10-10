@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 14:07:52 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/06 20:02:29 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/09 20:28:39 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,18 +65,18 @@ uint32_t	rgb_to_int(char *str)
 		counter++;
 	if (counter != 3)
 	{
-		ft_free_matrix((void **)rgb, free);
+		ft_free_matrix((void **)rgb, ft_free);
 		add_error_context(ft_strdup("\n\tExample: F 220,100,210"));
 		ft_error(E_INVALID_RGB_FIELDS);
 	}
 	if (!is_valid_rgbs(rgb))
 	{
-		ft_free_matrix((void **)rgb, free);
+		ft_free_matrix((void **)rgb, ft_free);
 		add_error_context(ft_strdup("\n\tExample: C 120,0,10"));
 		ft_error(E_INVALID_RGB_VALUE);
 	}
 	color = (ft_atoi(rgb[0]) << 24) | (ft_atoi(rgb[1]) << 16)
 		| (ft_atoi(rgb[2]) << 8) | 0xFF;
-	ft_free_matrix((void **)rgb, free);
+	ft_free_matrix((void **)rgb, ft_free);
 	return (color);
 }

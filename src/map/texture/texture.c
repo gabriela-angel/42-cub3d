@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 15:06:00 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/08 18:15:22 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/09 18:31:06 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,5 @@ void	handle_map_textures(t_map *map)
 	if (!map->height)
 		ft_error(E_EMPTY_MAP);
 	valid_textures(map);
+	// load_textures(map);
 }

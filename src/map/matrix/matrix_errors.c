@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 18:22:28 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/09 14:59:30 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/09 20:28:39 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static char	*build_colored_matrix(t_map *map)
 	{
 		line = colorize_line(map->matrix[i], i);
 		matrix = ft_strjoin_with_free(matrix, line);
-		free(line);
+		ft_free(line);
 		matrix = ft_strjoin_with_free(matrix, "\n");
 		i++;
 	}
@@ -72,6 +72,6 @@ void	print_flood_error(char *message)
 	matrix_str = build_colored_matrix(map);
 	print_errors();
 	postprocess_and_print_matrix(matrix_str);
-	free(matrix_str);
-	free(get_global_flood_errors()->points);
+	ft_free(matrix_str);
+	ft_free(get_global_flood_errors()->points);
 }
