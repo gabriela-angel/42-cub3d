@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 18:22:28 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/09 20:28:39 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/10 21:04:11 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ static char	*build_colored_matrix(t_map *map)
 	char	*line;
 	size_t	i;
 
-	matrix = ft_strdup("");
+	matrix = ft_strdup("\t\t");
 	i = 0;
 	while (map->matrix[i])
 	{
 		line = colorize_line(map->matrix[i], i);
 		matrix = ft_strjoin_with_free(matrix, line);
 		ft_free(line);
-		matrix = ft_strjoin_with_free(matrix, "\n");
+		matrix = ft_strjoin_with_free(matrix, "\n\t\t");
 		i++;
 	}
 	return (matrix);
@@ -59,7 +59,7 @@ static void	postprocess_and_print_matrix(char *matrix_str)
 		*c2 = ' ';
 		c2 = ft_strchr(c2 + 1, '2');
 	}
-	ft_printf("Matrix:\n%s\n", matrix_str);
+	ft_printf("\tMatrix:\n%s\n", matrix_str);
 }
 
 void	print_flood_error(char *message)
