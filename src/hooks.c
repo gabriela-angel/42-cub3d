@@ -6,50 +6,118 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 21:25:48 by gangel-a          #+#    #+#             */
-/*   Updated: 2025/09/30 22:52:44 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/12 23:07:47 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	ft_move_cam()
+static void	ft_rotate_cam()
 {
-	//this has to be angular"" a rotation
+	double oldDirX = dirX;
+	dirX = dirX * cos(-COLLISION_OFFSET) - dirY * sin(-COLLISION_OFFSET);
+	dirY = oldDirX * sin(-COLLISION_OFFSET) + dirY * cos(-COLLISION_OFFSET);
+	double oldPlaneX = planeX;
+	planeX = planeX * cos(-COLLISION_OFFSET) - planeY * sin(-COLLISION_OFFSET);
+	planeY = oldPlaneX * sin(-COLLISION_OFFSET) + planeY * cos(-COLLISION_OFFSET);
+
+	double oldDirX = dirX;
+	dirX = dirX * cos(COLLISION_OFFSET) - dirY * sin(COLLISION_OFFSET);
+	dirY = oldDirX * sin(COLLISION_OFFSET) + dirY * cos(COLLISION_OFFSET);
+	double oldPlaneX = planeX;
+	planeX = planeX * cos(COLLISION_OFFSET) - planeY * sin(COLLISION_OFFSET);
+	planeY = oldPlaneX * sin(COLLISION_OFFSET) + planeY * cos(COLLISION_OFFSET);
 }
 
-static void	ft_move_player(t_img *img, int x, int y)
+// UNDERSTAND THIS BETTER
+static void	ft_strafe(t_player *p, char *map, keys_t key)
 {
-	//remember to verify if a wall collision occurs!
-	//move left and right
-	img->player->instances[0].x = x;
-	//move forward and back
-	img->player->instances[0].y = y;
+	int		offset;
+	double	plane[2];
+
+	if (key == A)
+	{
+		plane[X] = p->dir[Y] * MOVE_SPEED;
+		plane[Y] = -p->dir[X] * MOVE_SPEED;
+	}
+	else if (key == D)
+	{
+		plane[X] = -p->dir[Y] * MOVE_SPEED;
+		plane[Y] = p->dir[X] * MOVE_SPEED;
+	}
+	if (plane[X] > 0)
+		offset = COLLISION_OFFSET;
+	else
+		offset = -COLLISION_OFFSET;
+	if (map[(int)(p->pos[X] + plane[X] + offset)][(int)p->pos[Y]] == false)
+		p->pos[X] += plane[X];
+	if (plane[Y] > 0)
+		offset = COLLISION_OFFSET;
+	else
+		offset = -COLLISION_OFFSET;
+	if (map[(int)p->pos[X]][(int)(p->pos[Y] + plane[Y] + offset)] == false)
+		p->pos[Y] += plane[Y];
+}
+
+static void	ft_move_backward(t_player *p, char *map)
+{
+	int		offset;
+	double	dir[2];
+
+	dir[X] = p->dir[X] * MOVE_SPEED;
+	dir[Y] = p->dir[Y] * MOVE_SPEED;
+	if (dir[X] > 0)
+		offset = -COLLISION_OFFSET;
+	else
+		offset = COLLISION_OFFSET;
+	if (map[(int)(p->pos[X] - dir[X] + offset)][(int)(p->pos[Y])] == false)
+		p->pos[X] -= dir[X];
+	if (dir[Y] > 0)
+		offset = -COLLISION_OFFSET;
+	else
+		offset = COLLISION_OFFSET;
+	if (map[(int)(p->pos[X])][(int)(p->pos[Y] - dir[Y] + offset)] == false)
+		p->pos[Y] -= dir[Y];
+}
+
+static void	ft_move_forward(t_player *p, char *map)
+{
+	int		offset;
+	double	dir[2];
+
+	dir[X] = p->dir[X] * MOVE_SPEED;
+	dir[Y] = p->dir[Y] * MOVE_SPEED;
+	if (dir[X] > 0)
+		offset = COLLISION_OFFSET;
+	else
+		offset = -COLLISION_OFFSET;
+	if (map[(int)(p->pos[X] + dir[X] + offset)][(int)p->pos[Y]] == false)
+		p->pos[X] += dir[X];
+	if (dir[Y] > 0)
+		offset = COLLISION_OFFSET;
+	else
+		offset = -COLLISION_OFFSET;
+	if (map[(int)p->pos[X]][(int)(p->pos[Y] + dir[Y] + offset)] == false)
+		p->pos[Y] += dir[Y];
 }
 
 void	key_hook(mlx_key_data_t keydata, void *param)
 {
-	t_mlx *g_mlx;
+	t_mlx		*g_mlx;
+	t_player	*p;
+	char		**map;
 
 	g_mlx = get_global_mlx();
-	//figure out what params we will need
-	t_img	*img;
-	int		y;
-	int		x;
-
-	img = (t_img *)param;
-	
+	p = &get_global_cube()->player;
+	map = get_global_cube()->map.matrix;
 	if (keydata.key == ESC && keydata.action != 0)
 		mlx_close_window(g_mlx->instance);
-	//  W A S D to move
 	else if (keydata.key == W && keydata.action != 0)
-		ft_move_player(img);
+		ft_move_forward(p, map);
 	else if (keydata.key == S && keydata.action != 0)
-		ft_move_player(img);
-	else if (keydata.key == A && keydata.action != 0)
-		ft_move_player(img);
-	else if (keydata.key == D && keydata.action != 0)
-		ft_move_player(img);
-	// left and right to look around	
+		ft_move_backward(p, map);
+	else if ((keydata.key == A || keydata.key == D) && keydata.action != 0)
+		ft_strafe(p, map, keydata.key);
 	else if (keydata.key == LEFT_KEY && keydata.action != 0)
 		ft_move_cam();
 	else if (keydata.key == RIGHT_KEY && keydata.action != 0)

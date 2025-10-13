@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 20:17:56 by lcosta-g          #+#    #+#             */
-/*   Updated: 2025/10/05 21:28:45 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/12 21:45:34 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ typedef enum e_error
 # define RIGHT_KEY MLX_KEY_RIGHT
 # define ESC MLX_KEY_ESCAPE
 
+// Movement speeds
+# define MOVE_SPEED 0.05
+# define COLLISION_OFFSET 0.3
+
 enum	e_axis
 {
 	X,
@@ -56,13 +60,24 @@ enum	e_texture
 	EAST
 };
 
-// TEST PURPOSE ONLY - create proper struct later
-typedef struct s_img
+typedef struct s_map_textures
 {
-	mlx_image_t			*bg;
-	mlx_image_t			*rect_1;
-	mlx_image_t			*rect_2;
-}						t_img;
+	uint32_t		floor;
+	uint32_t		ceiling;
+	t_hash_table	*paths;
+}					t_map_textures;
+
+typedef struct s_map
+{
+	size_t			height;
+	size_t			width;
+	char			*path;
+	int				fd;
+	char			**flood_fill;
+	char			**matrix;
+	t_map_textures	textures;
+}					t_map;
+
 
 typedef struct s_player
 {
@@ -70,6 +85,13 @@ typedef struct s_player
 	double	dir[2];
 	double	plane[2];
 }	t_player;
+
+typedef struct s_cube
+{
+	t_map		map;
+	t_player	player;
+	char		*error_context;
+}	t_cube;
 
 typedef struct s_ray
 {
@@ -93,13 +115,18 @@ typedef struct s_mlx
 	mlx_t		*instance;
 }			t_mlx;
 
+// MLX
 t_mlx		*get_global_mlx(void);
 void		ft_init_mlx(void);
-void		ft_error(t_error code);
+
+// CUBE
+t_cube *get_global_cube(void);
 
 // HOOKS
 void		key_hook(mlx_key_data_t keydata, void *param);
 void		cursor_hook(double xpos, double ypos, void *param);
 
+// ERROR
+void		ft_error(t_error code);
 
 #endif

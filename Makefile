@@ -44,7 +44,7 @@ SRC_PATH = ./src/
 HEADER_PATH = ./include/
 BUILD_PATH = ./build/
 
-GLOBAL_PATH = ./global/
+GLOBAL_PATH = ./shared/
 
 FILES = \
 	main.c \
@@ -52,7 +52,7 @@ FILES = \
 	error.c \
 	hooks.c \
 	draw.c \
-	$(GLOBAL_PATH)singleton.c \
+	$(GLOBAL_PATH)global.c \
 
 OBJS = $(addprefix $(BUILD_PATH), $(FILES:%.c=%.o))
 
