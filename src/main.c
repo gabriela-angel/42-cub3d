@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 08:15:36 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/09/30 18:54:27 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/13 23:15:50 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,15 @@ int	main(void)
 
 	// validate agrs and file extension
 	// init allocation for the game struct, map
-	// ft_init_game();
 	//parse
 	ft_init_mlx();
+	// ft_init_cube();
 	//init textures
 	//render imgs
+	//this includes the draw_3d_map() function
 	g_mlx = get_global_mlx();
+	mlx_key_hook(g_mlx->instance, key_hook, get_global_cube());
+	mlx_cursor_hook(g_mlx->instance, cursor_hook, get_global_cube());
 	mlx_loop(g_mlx->instance);
 	mlx_terminate(g_mlx->instance);
 	

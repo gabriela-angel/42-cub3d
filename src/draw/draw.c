@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 18:39:31 by gangel-a          #+#    #+#             */
-/*   Updated: 2025/10/05 22:28:09 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/13 23:17:44 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,29 +30,19 @@
 
 void	draw_3d_map()
 {
-	int		x;
-	t_ray	ray;
+	int			x;
+	t_ray		ray;
+	t_player	player;
 
 	x = 0;
-	// the player has to be set beforehand, but for now I will set it here using the example in the guide
-	t_player *player;
-
-	player = (t_player *)ft_gc_malloc(1 * sizeof(t_player));
-	player->pos[X] = 22;
-	player->pos[Y] = 12;
-	player->dir[X] = -1;
-	player->dir[Y] = 0;
-	player->plane[X] = 0;
-	player->plane[Y] = 0.66;
-
-	// this can stay
+	player = get_global_cube()->player;
 	while (x < WIDTH)
 	{
-		set_ray(player, &ray, x);
+		set_ray(&player, &ray, x);
 		dda(&ray);
 		calculate_wall_height(&ray);
-		// on this part, we will determine the texture of the walls, to be drawn, but i do not have the eimg info yeet, so I will use test values!
-		draw_textures(&ray, x, NULL); // null is a place holder for thw texture info
+		// on this part, we will determine the texture of the walls, to be drawn, and another to draw the texture of the floor/ceiling
+		//draw_textures(&ray, x, NULL); // null is a place holder for thw texture info
 		x++;
 	}
 }

@@ -45,13 +45,15 @@ HEADER_PATH = ./include/
 BUILD_PATH = ./build/
 
 GLOBAL_PATH = ./shared/
+DRAW_PATH = ./draw/
 
 FILES = \
 	main.c \
 	init.c \
 	error.c \
 	hooks.c \
-	draw.c \
+	$(DRAW_PATH)draw.c \
+	$(DRAW_PATH)raycaster.c \
 	$(GLOBAL_PATH)global.c \
 
 OBJS = $(addprefix $(BUILD_PATH), $(FILES:%.c=%.o))

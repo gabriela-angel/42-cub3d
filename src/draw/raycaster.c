@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.c                                             :+:      :+:    :+:   */
+/*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 18:39:31 by gangel-a          #+#    #+#             */
-/*   Updated: 2025/10/05 21:42:36 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/13 23:01:16 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,32 +91,4 @@ void	set_ray(t_player *player, t_ray *ray, int x)
 	else
 		ray->delta_dist[Y] = fabs(1 / ray->dir[Y]);
 	calc_step_and_side(ray, player);
-}
-
-void	draw_3d_map()
-{
-	int		x;
-	t_ray	ray;
-
-	x = 0;
-	// the player has to be set beforehand, but for now I will set it here using the example in the guide
-	t_player *player;
-
-	player = (t_player *)ft_gc_malloc(1 * sizeof(t_player));
-	player->pos[X] = 22;
-	player->pos[Y] = 12;
-	player->dir[X] = -1;
-	player->dir[Y] = 0;
-	player->plane[X] = 0;
-	player->plane[Y] = 0.66;
-	
-	// this can stay
-	while (x < WIDTH)
-	{
-		set_ray(player, &ray, x);
-		dda(&ray);
-		calculate_wall_height(&ray);
-		// on this part, we will determine the texture of the walls, to be drawn, but i do not have the eimg info yeet, so I will use test values!
-		x++;
-	}
 }

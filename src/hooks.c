@@ -6,30 +6,25 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 21:25:48 by gangel-a          #+#    #+#             */
-/*   Updated: 2025/10/12 23:07:47 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/13 23:17:01 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	ft_rotate_cam()
+static void	ft_rotate_cam(t_player *p, char *map, double rot_speed)
 {
-	double oldDirX = dirX;
-	dirX = dirX * cos(-COLLISION_OFFSET) - dirY * sin(-COLLISION_OFFSET);
-	dirY = oldDirX * sin(-COLLISION_OFFSET) + dirY * cos(-COLLISION_OFFSET);
-	double oldPlaneX = planeX;
-	planeX = planeX * cos(-COLLISION_OFFSET) - planeY * sin(-COLLISION_OFFSET);
-	planeY = oldPlaneX * sin(-COLLISION_OFFSET) + planeY * cos(-COLLISION_OFFSET);
+	double	old_dir_x;
+	double	old_plane_x;
 
-	double oldDirX = dirX;
-	dirX = dirX * cos(COLLISION_OFFSET) - dirY * sin(COLLISION_OFFSET);
-	dirY = oldDirX * sin(COLLISION_OFFSET) + dirY * cos(COLLISION_OFFSET);
-	double oldPlaneX = planeX;
-	planeX = planeX * cos(COLLISION_OFFSET) - planeY * sin(COLLISION_OFFSET);
-	planeY = oldPlaneX * sin(COLLISION_OFFSET) + planeY * cos(COLLISION_OFFSET);
+	old_dir_x = p->dir[X];
+	old_plane_x= p->plane[X];
+	p->dir[X] = p->dir[X] * cos(rot_speed) - p->dir[Y] * sin(rot_speed);
+	p->dir[Y] = old_dir_x * sin(rot_speed) + p->dir[Y] * cos(rot_speed);
+	p->plane[X] = p->plane[X] * cos(rot_speed) - p->plane[Y] * sin(rot_speed);
+	p->plane[Y] = old_plane_x * sin(rot_speed) + p->plane[Y] * cos(rot_speed);
 }
 
-// UNDERSTAND THIS BETTER
 static void	ft_strafe(t_player *p, char *map, keys_t key)
 {
 	int		offset;
@@ -105,11 +100,13 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 {
 	t_mlx		*g_mlx;
 	t_player	*p;
+	t_cube		*cube;
 	char		**map;
 
 	g_mlx = get_global_mlx();
-	p = &get_global_cube()->player;
-	map = get_global_cube()->map.matrix;
+	cube = (t_cube *)param;
+	p = &cube->player;
+	map = cube->map.matrix;
 	if (keydata.key == ESC && keydata.action != 0)
 		mlx_close_window(g_mlx->instance);
 	else if (keydata.key == W && keydata.action != 0)
@@ -119,21 +116,23 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 	else if ((keydata.key == A || keydata.key == D) && keydata.action != 0)
 		ft_strafe(p, map, keydata.key);
 	else if (keydata.key == LEFT_KEY && keydata.action != 0)
-		ft_move_cam();
+		ft_move_cam(p, map, ROT_SPEED);
 	else if (keydata.key == RIGHT_KEY && keydata.action != 0)
-		ft_move_cam();
+		ft_move_cam(p, map, -ROT_SPEED);
 }
 
 //BONUS
 void	cursor_hook(double xpos, double ypos, void *param)
 {
-	// Parameters:
-	// 	xpos – [in] The mouse x position.
-	// 	ypos – [in] The mouse y position.
-	// 	param – [in] Additional parameter to pass on to the function.
-
-	// if the ypos changes, we have to rotate the cam
-	(void) xpos;
+	int	delta_x;
+	t_cube	*cube;
+	// REMEMBER TO INIT MOUSE X POS TO NEGATIVE NO WHEN GAME STARTS
 	(void) ypos;
-	(void) param;
+	cube = (t_cube *)param;
+	if (cube->mouse_x < 0)
+		cube->mouse_x = xpos;
+	delta_x = xpos - cube->mouse_x;
+	if (delta_x != 0)
+		rotate_direction(cube->player, delta_x * MOUSE_SENSITIVITY);
+	cube->mouse_x = xpos;
 }

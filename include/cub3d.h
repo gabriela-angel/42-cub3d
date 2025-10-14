@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 20:17:56 by lcosta-g          #+#    #+#             */
-/*   Updated: 2025/10/12 21:45:34 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/13 22:46:38 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ typedef enum e_error
 // Movement speeds
 # define MOVE_SPEED 0.05
 # define COLLISION_OFFSET 0.3
+# define ROT_SPEED 0.01
+# define MOUSE_SENSITIVITY 0.002
 
 enum	e_axis
 {
@@ -90,6 +92,7 @@ typedef struct s_cube
 {
 	t_map		map;
 	t_player	player;
+	int			mouse_x;
 	char		*error_context;
 }	t_cube;
 
