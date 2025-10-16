@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_matrix.c                                   :+:      :+:    :+:   */
+/*   settings.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 10:39:40 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/03 13:13:51 by lhenriqu         ###   ########.fr       */
+/*   Created: 2025/09/27 13:42:53 by lhenriqu          #+#    #+#             */
+/*   Updated: 2025/09/27 13:48:06 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef SETTINGS_H
+# define SETTINGS_H
 
-void	ft_free_matrix(void **matrix, void (*free_func)(void *))
-{
-	int	i;
+// Constants for window dimensions
+# define WIDTH 800
+# define HEIGHT 600
 
-	if (!matrix)
-		return ;
-	i = 0;
-	while (matrix[i])
-		free_func(matrix[i++]);
-	free(matrix);
-}
+
+#endif

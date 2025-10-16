@@ -6,20 +6,23 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 08:15:36 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/16 19:02:11 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/16 19:17:07 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(void)
+int	main(int ac, char *av[])
 {
 	t_mlx	*g_mlx;
 
-	// validate agrs and file extension
-	// init allocation for the game struct, map
-	//parse
+	if (ac != 2)
+		ft_error(E_INVALID_ARGS);
+	// validate agrs and file extension, parse
+	ft_init_map(av[1]);
+	// init allocation for the game struct, map missing
 	ft_init_mlx();
+	ft_error(E_SUCCESS);
 	// ft_init_cube();
 	//init textures
 	//render imgs

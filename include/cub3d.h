@@ -6,22 +6,29 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 20:17:56 by lcosta-g          #+#    #+#             */
-/*   Updated: 2025/10/13 22:46:38 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/16 19:09:16 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "../libs/MLX/include/MLX42/MLX42.h"
 # include "../libs/libft/libft.h"
 # include <math.h>
+# include "error.h"
+# include "map.h"
+# include "mlx.h"
+# include "settings.h"
+# include <fcntl.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
 
-// Error codes for the application
-typedef enum e_error
+typedef struct s_cube
 {
-	E_MLX_INIT_FAILED,
-}			t_error;
+	t_map		map;
+	char		*error_context;
+}	t_cube;
 
 // Constants for window dimensions
 # define WIDTH 800
@@ -131,5 +138,9 @@ void		cursor_hook(double xpos, double ypos, void *param);
 
 // ERROR
 void		ft_error(t_error code);
+
+// UTILS
+uint32_t	rgb_to_int(char *str);
+char	*trim(char *str);
 
 #endif
