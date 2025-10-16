@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 21:25:48 by gangel-a          #+#    #+#             */
-/*   Updated: 2025/10/13 23:17:01 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/16 19:01:41 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	ft_rotate_cam(t_player *p, char *map, double rot_speed)
 	double	old_plane_x;
 
 	old_dir_x = p->dir[X];
-	old_plane_x= p->plane[X];
+	old_plane_x = p->plane[X];
 	p->dir[X] = p->dir[X] * cos(rot_speed) - p->dir[Y] * sin(rot_speed);
 	p->dir[Y] = old_dir_x * sin(rot_speed) + p->dir[Y] * cos(rot_speed);
 	p->plane[X] = p->plane[X] * cos(rot_speed) - p->plane[Y] * sin(rot_speed);
@@ -124,7 +124,7 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 //BONUS
 void	cursor_hook(double xpos, double ypos, void *param)
 {
-	int	delta_x;
+	int		delta_x;
 	t_cube	*cube;
 	// REMEMBER TO INIT MOUSE X POS TO NEGATIVE NO WHEN GAME STARTS
 	(void) ypos;

@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 08:15:36 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/13 23:15:50 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/16 19:02:11 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(void)
 {
-	t_mlx *g_mlx;
+	t_mlx	*g_mlx;
 
 	// validate agrs and file extension
 	// init allocation for the game struct, map
