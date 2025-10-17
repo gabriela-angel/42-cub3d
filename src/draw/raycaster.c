@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 18:39:31 by gangel-a          #+#    #+#             */
-/*   Updated: 2025/10/13 23:01:16 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/16 19:41:06 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	calculate_wall_height(t_ray *ray)
 		ray->line_end = HEIGHT - 1;
 }
 
-void	dda(t_ray *ray)
+void	dda(t_ray *ray, char **map)
 {
 	ray->hit = 0;
 	while (ray->hit == 0)
@@ -44,14 +44,12 @@ void	dda(t_ray *ray)
 			ray->map_pos[Y] += ray->step[Y];
 			ray->side = 1;
 		}
-		//Check if ray has hit a wall
-		// Remember to change this to the actual map variable later
-		if (0) // if (worldMap[ray->map_pos[X]][ray->map_pos[Y]] > 0)
+		if (map[ray->map_pos[X]][ray->map_pos[Y]] > 0)
 			ray->hit = 1;
 	}
 }
 
-void	calc_step_and_side(t_ray *ray, t_player *player)
+static void	calc_step_and_side(t_ray *ray, t_player *player)
 {
 	if (ray->dir[X] < 0)
 	{

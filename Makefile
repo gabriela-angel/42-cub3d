@@ -44,6 +44,7 @@ SRC_PATH = ./src/
 HEADER_PATH = ./include/
 BUILD_PATH = ./build/
 
+ACTIONS_FOLDER = ./actions/
 DRAW_FOLDER = ./draw/
 ERRORS_FOLDER = ./errors/
 SHARED_FOLDER = ./shared/
@@ -52,10 +53,12 @@ MLX_FOLDER = ./mlx/
 
 FILES = \
 	main.c \
-	init.c \
-	hooks.c \
-	$(DRAW_PATH)draw.c \
-	$(DRAW_PATH)raycaster.c \
+	init_player.c \
+	$(ACTIONS_FOLDER)hooks.c \
+	\
+	$(DRAW_FOLDER)draw.c \
+	$(DRAW_FOLDER)raycaster.c \
+	\
 	$(ERRORS_FOLDER)map.c \
 	$(ERRORS_FOLDER)error.c \
 	$(ERRORS_FOLDER)generic.c \
@@ -116,7 +119,7 @@ $(NAME): $(OBJS) $(HEADER_PATH)cub3d.h
 	@printf "$(CYAN)------ --------------------------------------------- ------$(RESET)\n"
 	@echo " "
 
-$(BUILD_PATH)%.o: $(SRC_PATH)%.c
+$(BUILD_PATH)%.o: $(SRC_PATH)%.c | $(BUILD_PATH)
 	@printf "$(YELLOW)[Compiling]$(RESET) $(notdir $<)...\n"
 	@$(CC) $(CFLAGS) $(OFLAGS) -c $< -o $@ -I$(HEADER_PATH)
 	@printf "$(UP)$(CUT)"

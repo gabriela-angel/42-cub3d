@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 20:17:56 by lcosta-g          #+#    #+#             */
-/*   Updated: 2025/10/16 19:09:16 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/16 23:07:44 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,82 +18,18 @@
 # include "error.h"
 # include "map.h"
 # include "mlx.h"
+# include "player.h"
 # include "settings.h"
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
 
-typedef struct s_cube
-{
-	t_map		map;
-	char		*error_context;
-}	t_cube;
-
-// Constants for window dimensions
-# define WIDTH 800
-# define HEIGHT 600
-
-// KEY BINDS
-# define W MLX_KEY_W
-# define A MLX_KEY_A
-# define S MLX_KEY_S
-# define D MLX_KEY_D
-# define LEFT_KEY MLX_KEY_LEFT
-# define RIGHT_KEY MLX_KEY_RIGHT
-# define ESC MLX_KEY_ESCAPE
-
-// Movement speeds
-# define MOVE_SPEED 0.05
-# define COLLISION_OFFSET 0.3
-# define ROT_SPEED 0.01
-# define MOUSE_SENSITIVITY 0.002
-
 enum	e_axis
 {
 	X,
 	Y
 };
-
-enum	e_direction
-{
-	RIGHT = 1,
-	LEFT = -1
-};
-
-enum	e_texture
-{
-	NORTH,
-	SOUTH,
-	WEST,
-	EAST
-};
-
-typedef struct s_map_textures
-{
-	uint32_t		floor;
-	uint32_t		ceiling;
-	t_hash_table	*paths;
-}					t_map_textures;
-
-typedef struct s_map
-{
-	size_t			height;
-	size_t			width;
-	char			*path;
-	int				fd;
-	char			**flood_fill;
-	char			**matrix;
-	t_map_textures	textures;
-}					t_map;
-
-
-typedef struct s_player
-{
-	double	pos[2];
-	double	dir[2];
-	double	plane[2];
-}	t_player;
 
 typedef struct s_cube
 {
@@ -120,24 +56,14 @@ typedef struct s_ray
 }	t_ray;
 
 
-typedef struct s_mlx
-{
-	mlx_t		*instance;
-}			t_mlx;
-
-// MLX
-t_mlx		*get_global_mlx(void);
-void		ft_init_mlx(void);
-
 // CUBE
 t_cube *get_global_cube(void);
 
-// HOOKS
-void		key_hook(mlx_key_data_t keydata, void *param);
-void		cursor_hook(double xpos, double ypos, void *param);
-
-// ERROR
-void		ft_error(t_error code);
+// DRAW
+void		draw_3d_map(void);
+void		set_ray(t_player *player, t_ray *ray, int x);
+void		dda(t_ray *ray, char **map);
+void		calculate_wall_height(t_ray *ray);
 
 // UTILS
 uint32_t	rgb_to_int(char *str);
