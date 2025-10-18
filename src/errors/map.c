@@ -6,13 +6,13 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 13:28:47 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/09 14:54:16 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/18 13:11:16 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	handle_texture_miss(t_error code)
+static void	handle_texture_miss_dup(t_error code)
 {
 	if (code == E_TEX_NO_MISS)
 		print_error("\tMissing texture path for South (NO).");
@@ -26,11 +26,7 @@ static void	handle_texture_miss(t_error code)
 		print_error("\tMissing floor color.");
 	else if (code == E_C_MISS)
 		print_error("\tMissing ceiling color.");
-}
-
-static void	handle_texture_dup(t_error code)
-{
-	if (code == E_TEX_DUP)
+	else if (code == E_TEX_DUP)
 		print_error("\tDuplicate texture path definition: ");
 	else if (code == E_F_DUP)
 		print_error("\tDuplicate floor color definition.");
@@ -41,13 +37,13 @@ static void	handle_texture_dup(t_error code)
 static void	handle_texture_file_errors(t_error code)
 {
 	if (code == E_NO_INV_EXT)
-		print_error("\tNO texture file must be " C_YEL ".png/.xpm" C_RED ".");
+		print_error("\tNO texture file must be " C_YEL ".png" C_RED ".");
 	else if (code == E_SO_INV_EXT)
-		print_error("\tSO texture file must be " C_YEL ".png/.xpm" C_RED ".");
+		print_error("\tSO texture file must be " C_YEL ".png" C_RED ".");
 	else if (code == E_WE_INV_EXT)
-		print_error("\tWE texture file must be " C_YEL ".png/.xpm" C_RED ".");
+		print_error("\tWE texture file must be " C_YEL ".png" C_RED ".");
 	else if (code == E_EA_INV_EXT)
-		print_error("\tEA texture file must be " C_YEL ".png/.xpm" C_RED ".");
+		print_error("\tEA texture file must be " C_YEL ".png" C_RED ".");
 	else if (code == E_NO_FILE)
 		print_error("\tNO texture file could not be opened: ");
 	else if (code == E_SO_FILE)
@@ -62,16 +58,15 @@ void	handle_map_content_errors(t_error code)
 {
 	if (code == E_MAP_NOT_CLOSED)
 		print_flood_error("Map is not closed/surrounded by walls.");
-	if (code == E_MULTIPLE_PLAYER)
-		print_error("\tMap contains multiple player start positions.");
 	else if (code == E_NO_PLAYER)
 		print_error("\tMap must contain one player start position.");
+	else if (code == E_MULTIPLE_PLAYER)
+		print_flood_error("Map contains multiple player start positions.");
 }
 
 void	handle_map_errors(t_error code)
 {
-	handle_texture_miss(code);
-	handle_texture_dup(code);
+	handle_texture_miss_dup(code);
 	handle_texture_file_errors(code);
 	handle_map_content_errors(code);
 }

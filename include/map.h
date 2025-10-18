@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 21:15:06 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/08 19:39:17 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/18 12:57:38 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_map
 	t_map_textures	textures;
 }					t_map;
 
+void				init_player(void);
 t_bool				has_map_char(char *line);
 void				valid_textures(t_map *map);
 void				ft_init_map(char *map_path);

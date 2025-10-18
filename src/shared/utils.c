@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 14:07:52 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/09 20:28:39 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/18 12:07:34 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ t_bool	has_image_extension(char *path)
 	ssize_t	no_ext;
 
 	no_ext = ft_strlen(path) - 4;
-	return (ft_strcmp(path + no_ext, ".png") == 0
-		|| ft_strcmp(path + no_ext, ".xpm") == 0);
+	return (ft_strcmp(path + no_ext, ".png") == 0);
 }
 
 char	*trim(char *str)
