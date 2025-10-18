@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 21:15:06 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/18 20:29:17 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/18 20:38:15 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,7 @@ t_bool				has_map_char(char *line);
 void				valid_textures(t_map *map);
 t_bool				has_image_extension(char *path);
 void				update_width_and_height(t_map *map, size_t line_length);
+void				ft_render_img(void);
+
 
 #endif

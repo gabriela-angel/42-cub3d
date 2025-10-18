@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 21:25:48 by gangel-a          #+#    #+#             */
-/*   Updated: 2025/10/16 23:04:54 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/18 20:36:27 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	cursor_hook(double xpos, double ypos, void *param)
 {
 	double		delta_x;
 	t_cube	*cube;
-	// REMEMBER TO INIT MOUSE X POS TO NEGATIVE NO WHEN GAME STARTS
 	(void) ypos;
 	cube = (t_cube *)param;
 	if (cube->mouse_x < 0)

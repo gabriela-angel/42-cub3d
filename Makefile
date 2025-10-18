@@ -44,7 +44,7 @@ SRC_PATH = ./src/
 HEADER_PATH = ./include/
 BUILD_PATH = ./build/
 
-ACTIONS_FOLDER = ./actions/
+PLAYER_FOLDER = ./player/
 DRAW_FOLDER = ./draw/
 ERRORS_FOLDER = ./errors/
 SHARED_FOLDER = ./shared/
@@ -54,10 +54,11 @@ MLX_FOLDER = ./mlx/
 FILES = \
 	main.c \
 	init_player.c \
-	$(ACTIONS_FOLDER)hooks.c \
-	$(ACTIONS_FOLDER)movement.c \
+	$(PLAYER_FOLDER)init_player.c \
+	$(PLAYER_FOLDER)movement.c \
 	\
 	$(DRAW_FOLDER)draw.c \
+	$(DRAW_FOLDER)draw_textures.c \
 	$(DRAW_FOLDER)raycaster.c \
 	\
 	$(ERRORS_FOLDER)map.c \
@@ -70,6 +71,7 @@ FILES = \
 	$(MAP_FOLDER)validation.c \
 	\
 	$(MLX_FOLDER)mlx.c \
+	$(MLX_FOLDER)hooks.c \
 	\
 	$(SHARED_FOLDER)utils.c \
 	$(SHARED_FOLDER)global.c \
