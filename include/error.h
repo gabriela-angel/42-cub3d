@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 13:42:01 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/06 17:57:44 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/18 12:27:05 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef enum e_error
 	E_INVALID_ARGS,
 	E_OPEN_FAILED,
 	E_MLX_INIT_FAILED,
+	E_MLX_IMG_INIT_FAILED,
 
 	E_INVALID_MAP_NAME,
 	E_EMPTY_MAP_FILE,

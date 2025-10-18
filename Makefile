@@ -55,6 +55,7 @@ FILES = \
 	main.c \
 	init_player.c \
 	$(ACTIONS_FOLDER)hooks.c \
+	$(ACTIONS_FOLDER)movement.c \
 	\
 	$(DRAW_FOLDER)draw.c \
 	$(DRAW_FOLDER)raycaster.c \

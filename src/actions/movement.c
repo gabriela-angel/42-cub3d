@@ -6,13 +6,13 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 23:04:56 by gangel-a          #+#    #+#             */
-/*   Updated: 2025/10/16 23:05:02 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/18 12:33:44 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	ft_rotate_cam(t_player *p, double rot_speed)
+void	ft_rotate_cam(t_player *p, double rot_speed)
 {
 	double	old_dir_x;
 	double	old_plane_x;
@@ -25,7 +25,7 @@ static void	ft_rotate_cam(t_player *p, double rot_speed)
 	p->plane[Y] = old_plane_x * sin(rot_speed) + p->plane[Y] * cos(rot_speed);
 }
 
-static void	ft_strafe(t_player *p, char **map, keys_t key)
+void	ft_strafe(t_player *p, char **map, keys_t key)
 {
 	int		offset;
 	double	plane[2];
@@ -54,7 +54,7 @@ static void	ft_strafe(t_player *p, char **map, keys_t key)
 		p->pos[Y] += plane[Y];
 }
 
-static void	ft_move_backward(t_player *p, char **map)
+void	ft_move_backward(t_player *p, char **map)
 {
 	int		offset;
 	double	dir[2];
@@ -75,7 +75,7 @@ static void	ft_move_backward(t_player *p, char **map)
 		p->pos[Y] -= dir[Y];
 }
 
-static void	ft_move_forward(t_player *p, char **map)
+void	ft_move_forward(t_player *p, char **map)
 {
 	int		offset;
 	double	dir[2];

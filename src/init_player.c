@@ -6,13 +6,13 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 22:05:28 by gangel-a          #+#    #+#             */
-/*   Updated: 2025/10/16 22:06:44 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/18 12:33:18 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static t_bool	set_player_pos_dir(int x_pos, int y_pos)
+static t_bool	set_player_pos_dir(size_t x_pos, size_t y_pos)
 {
 	t_player	*player;
 	t_map		*map;
@@ -40,8 +40,8 @@ void	ft_init_player(void)
 {
 	t_player	*player;
 	t_map		*map;
-	int			x_pos;
-	int			y_pos;
+	size_t			x_pos;
+	size_t			y_pos;
 
 	player = &get_global_cube()->player;
 	map = &get_global_cube()->map;

@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 13:44:39 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/16 23:08:04 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/18 12:23:42 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 
 typedef struct s_mlx
 {
-	mlx_t	*instance;
+	mlx_t		*instance;
+	mlx_image_t	*img;
 }			t_mlx;
 
 t_mlx		*get_global_mlx(void);
