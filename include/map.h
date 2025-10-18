@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 21:15:06 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/06 20:03:01 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/18 20:29:17 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,29 @@ typedef struct s_point
 	size_t	y;
 }	t_point;
 
+enum e_texture_index
+{
+	NORTH,
+	SOUTH,
+	EAST,
+	WEST
+};
+
+typedef struct s_texture
+{
+	void			*tex;
+	int				width;
+	int				height;
+	int				bpp;
+	int				line_size;
+}					t_texture;
+
 typedef struct s_map_textures
 {
 	uint32_t		floor;
 	uint32_t		ceiling;
 	t_hash_table	*paths;
+	t_texture		textures[4];
 }					t_map_textures;
 
 typedef struct s_map

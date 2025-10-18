@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 18:39:31 by gangel-a          #+#    #+#             */
-/*   Updated: 2025/10/18 12:31:16 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/18 16:55:12 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,20 @@ void	draw_3d_map()
 		set_ray(&player, &ray, x);
 		dda(&ray, get_global_cube()->map.matrix);
 		calculate_wall_height(&ray);
-		// on this part, we will determine the texture of the walls, to be drawn, and another to draw the texture of the floor/ceiling
-		//draw_textures(&ray, x, NULL); // null is a place holder for thw texture info
+		draw_textures(&player, &ray, x);
 		draw_ceiling_and_floor(&(get_global_cube()->map.textures), &ray, x);
 		x++;
 	}
+}
+
+void	ft_render_img(void)
+{
+	t_mlx	*mlx;
+
+	mlx = get_global_mlx();
+	mlx_set_setting(MLX_STRETCH_IMAGE, true);
+	mlx->img = mlx_new_image(mlx->instance, WIDTH, HEIGHT);
+	if (!mlx->img || mlx_image_to_window(mlx->instance, mlx->img, 0, 0) < 0)
+		ft_error(E_MLX_IMG_INIT_FAILED);
+	draw_3d_map();
 }

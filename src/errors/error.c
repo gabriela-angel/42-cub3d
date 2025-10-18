@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 13:28:14 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/06 13:56:00 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/18 14:06:46 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	ft_error(t_error code)
 	handle_generic_errors(code);
 	handle_map_errors(code);
 	ft_map_destroy(get_global_cube()->map.textures.paths);
+	if (get_global_mlx()->img)
+		mlx_delete_image(get_global_mlx()->instance, get_global_mlx()->img);
 	if (get_global_mlx()->instance)
 		mlx_terminate(get_global_mlx()->instance);
 	ft_gc_clean_all();
