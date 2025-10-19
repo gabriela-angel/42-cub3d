@@ -6,27 +6,21 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 18:32:15 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/19 01:06:29 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/19 01:16:44 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-typedef struct s_player
-{
-	t_point	position;
-	char	direction;
-}			t_player;
-
-static void	player_positions(t_map *map, t_point **players)
+static char	player_positions(t_map *map, t_point **players)
 {
 	size_t	i;
 	size_t	j;
 	size_t	count;
+	char	direction;
 
 	i = 0;
 	count = 0;
-	*players = NULL;
 	while (i < map->height)
 	{
 		j = 0;
@@ -35,8 +29,8 @@ static void	player_positions(t_map *map, t_point **players)
 			if (ft_strchr("NSEW", map->matrix[i][j]))
 			{
 				*players = ft_recalloc(*players, sizeof(t_point) * (count + 1));
-				(*players)[count] = (t_point){j, i};
-				count++;
+				(*players)[count++] = (t_point){j, i};
+				direction = map->matrix[i][j];
 			}
 			j++;
 		}
@@ -44,14 +38,27 @@ static void	player_positions(t_map *map, t_point **players)
 	}
 	*players = ft_recalloc(*players, sizeof(t_point) * (count + 1));
 	(*players)[count] = (t_point){-1, -1};
+	return (direction);
+}
+
+static void	set_player(t_map *map, t_point position, char direction)
+{
+	t_cube	*cub;
+
+	cub = get_global_cube();
+	cub->player.pos[0] = (double)position.x;
+	cub->player.pos[1] = (double)position.y;
+	cub->player.dir_char = direction;
 }
 
 static void	get_player(t_map *map)
 {
 	size_t	count;
 	t_point	*players;
+	char	direction;
 
-	player_positions(map, &players);
+	players = NULL;
+	direction = player_positions(map, &players);
 	count = 0;
 	while (players[count].x != (size_t)-1)
 		count++;
@@ -61,15 +68,14 @@ static void	get_player(t_map *map)
 	if (count > 1)
 	{
 		count = 0;
-		while (players[count].x != (size_t)-1)
+		while (players[count].x != (size_t) - 1)
 		{
 			add_flood_invalid_char(players[count]);
 			count++;
 		}
 		ft_error(E_MULTIPLE_PLAYER);
 	}
-	// Set player position and direction
-	// plauyers[0] is the only player position
+	set_player(map, players[0], direction);
 	ft_free(players);
 }
 
