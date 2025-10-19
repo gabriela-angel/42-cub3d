@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 13:29:58 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/03 13:30:50 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/09 14:57:21 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	handle_generic_errors(t_error code)
 	else if (code == E_INVALID_ELEMENT)
 		print_error("\tMap file contains an invalid element: ");
 	else if (code == E_INVALID_MAP_CHAR)
-		print_error("\tAllowed map characters: " C_YEL "01NSEW" C_RED ". ");
+		print_flood_error("Map contains invalid character(s).");
 	else if (code == E_MAP_NOT_LAST_ELEMENT)
 		print_error("\tMap must be the last element in the file.");
 	else if (code == E_OPEN_FAILED)

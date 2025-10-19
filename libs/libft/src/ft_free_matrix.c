@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 10:39:40 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/03 13:13:51 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/09 19:50:38 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ void	ft_free_matrix(void **matrix, void (*free_func)(void *))
 	i = 0;
 	while (matrix[i])
 		free_func(matrix[i++]);
-	free(matrix);
+	free_func(matrix);
 }

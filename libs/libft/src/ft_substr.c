@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 16:59:00 by lhenriqu          #+#    #+#             */
-/*   Updated: 2024/10/14 15:59:52 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/09 19:34:35 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (ft_strdup(""));
 	if ((s_len - start) < len)
 		len = s_len - start;
-	str = (char *)malloc((len + 1) * sizeof(char));
+	str = (char *)ft_malloc((len + 1) * sizeof(char));
 	if (str == NULL)
 		return (NULL);
 	i = 0;

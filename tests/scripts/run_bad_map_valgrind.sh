@@ -3,10 +3,10 @@
 # To better view enable Debug mode in make file
 
 # Navigate to project root (../ from scripts/)
-cd "$(dirname "$0")/.."
+cd "$(dirname "$0")/../.."
 
-CUB3D_EXEC="./cub3d"
-CUB3D_VAL="valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --quiet --track-fds=all --suppressions=suppression.sup"
+CUB3D_EXEC="./cub3D"
+CUB3D_VAL="valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --quiet --track-fds=all --suppressions=MLX.supp"
 
 RED="\e[31m"
 RESET="\e[0m"
@@ -36,7 +36,7 @@ echo -e "
 
 # Run for all bad maps
 echo -e "${RED}Running Valgrind on BAD maps:${RESET}"
-for map in maps/bad/*.cub; do
+for map in maps/invalid/*.cub; do
     if [ -f "$map" ]; then
         printf "$RED\nRunning:\n$map\n$CUB3D_VAL $CUB3D_EXEC  $RESET\n"
         $CUB3D_VAL $CUB3D_EXEC "$map"

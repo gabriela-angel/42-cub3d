@@ -6,13 +6,13 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 18:17:01 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/06 19:58:04 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/09 14:34:46 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	update_width_and_height(t_map *map, size_t line_length)
+void	update_width_and_height(t_map *map, size_t line_length) // map_utils
 {
 	size_t	new_width;
 
@@ -34,7 +34,7 @@ static void	check_file_content(char *map_path)
 	line = get_next_line(fd);
 	if (!line)
 	{
-		close(fd);
+		close_and_clear(&fd);
 		ft_error(E_EMPTY_MAP_FILE);
 	}
 	while (line)
@@ -46,10 +46,9 @@ static void	check_file_content(char *map_path)
 				ft_error(E_INVALID_FILE_CHAR);
 			i++;
 		}
-		free(line);
 		line = get_next_line(fd);
 	}
-	close_and_clear(fd);
+	close_and_clear(&fd);
 }
 
 static void	parse_map(char *map_path)

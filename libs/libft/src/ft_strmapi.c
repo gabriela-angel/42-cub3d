@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 13:46:49 by lhenriqu          #+#    #+#             */
-/*   Updated: 2024/10/14 14:04:07 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/09 19:34:53 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		return (NULL);
 	i = 0;
 	len = ft_strlen(s);
-	arr = malloc((len + 1) * sizeof(char));
+	arr = ft_malloc((len + 1) * sizeof(char));
 	if (arr == NULL)
 		return (NULL);
 	while (s[i])

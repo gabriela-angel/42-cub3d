@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 20:17:56 by lcosta-g          #+#    #+#             */
-/*   Updated: 2025/10/03 13:37:09 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/19 01:45:46 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,32 @@
 # include "mlx.h"
 # include "settings.h"
 # include <fcntl.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
+
+enum	e_axis
+{
+	X,
+	Y
+};
+
+typedef struct s_player
+{
+	double		pos[2];
+	double		dir[2];
+	double		plane[2];
+}				t_player;
 
 typedef struct s_cube
 {
 	t_map		map;
+	t_player	player;
 	char		*error_context;
-}	t_cube;
+}				t_cube;
 
-t_cube *get_global_cube(void);
-uint32_t	rgb_to_int(char *str);
-char	*trim(char *str);
+t_cube			*get_global_cube(void);
+uint32_t		rgb_to_int(char *str);
+char			*trim(char *str);
 
 #endif

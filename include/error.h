@@ -6,16 +6,16 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 13:42:01 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/06 17:57:44 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/09 14:54:02 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ERROR_H
 # define ERROR_H
 
+# include "map.h"
 # include <errno.h>
 # include <string.h>
-# include "map.h"
 
 // Error codes for the application
 typedef enum e_error
@@ -59,18 +59,34 @@ typedef enum e_error
 
 	E_INVALID_RGB_VALUE,
 	E_INVALID_RGB_FIELDS,
-}			t_error;
 
+	E_MAP_NOT_CLOSED,
+
+	E_MULTIPLE_PLAYER,
+	E_NO_PLAYER,
+}				t_error;
+
+// Linked list to store t_points of flood fill errors
 typedef struct s_flood_errors
 {
-	t_point	*points;
-	size_t	count;
-}			t_flood_errors;
+	t_point		*points;
+	size_t		count;
+}				t_flood_errors;
 
-void		ft_error(t_error code);
-void		print_error(char *message);
-void		add_error_context(char *message);
-void		handle_generic_errors(t_error code);
-void		handle_map_errors(t_error code);
+// error.c
+void			ft_error(t_error code);
+void			print_error(char *message);
+void			add_error_context(char *message);
+void			handle_generic_errors(t_error code);
+void			handle_map_errors(t_error code);
+
+// flood_errors.c
+t_flood_errors	*get_global_flood_errors(void);
+void			add_flood_invalid_char(t_point point);
+void			print_errors(void);
+
+// matrix_errors.c
+void			print_flood_error(char *message);
+void			flood_fill(char **mtx, size_t wdt, size_t hgt, t_point start);
 
 #endif

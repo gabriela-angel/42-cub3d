@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 10:28:40 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/05/02 21:43:58 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/09 19:51:24 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ char	*get_next_line(int fd)
 	line = NULL;
 	line = get_line(buffer[fd]);
 	buffer[fd] = get_rest(buffer[fd]);
+	gc_add_ctx(get_gnl_ctx(fd), line);
 	return (line);
 }
 
@@ -44,7 +45,7 @@ static char	*ft_read(int fd, char *buffer)
 		bytes_read = read(fd, temp_buffer, BUFFER_SIZE);
 		if (bytes_read < 0)
 		{
-			free(buffer);
+			ft_free(buffer);
 			return (NULL);
 		}
 		temp_buffer[bytes_read] = '\0';
@@ -70,7 +71,7 @@ static char	*get_line(char *buffer)
 		while (buffer[line_len])
 			line_len++;
 	}
-	line = malloc((line_len + 2) * sizeof(char));
+	line = ft_malloc((line_len + 2) * sizeof(char));
 	if (line == NULL)
 		return (NULL);
 	line = ft_strncpy(line, buffer, line_len);
@@ -89,6 +90,6 @@ static char	*get_rest(char *buffer)
 	nl_address = get_nl_address(buffer);
 	if (nl_address)
 		rest = ft_strdup(nl_address + 1);
-	free(buffer);
+	ft_free(buffer);
 	return (rest);
 }
