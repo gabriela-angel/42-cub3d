@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 18:32:15 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/18 13:32:25 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/19 01:06:29 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 typedef struct s_player
 {
-	t_point		position;
-	char		direction;
-}				t_player;
+	t_point	position;
+	char	direction;
+}			t_player;
 
 static void	player_positions(t_map *map, t_point **players)
 {
@@ -46,20 +46,20 @@ static void	player_positions(t_map *map, t_point **players)
 	(*players)[count] = (t_point){-1, -1};
 }
 
-static void get_player(t_map *map)
+static void	get_player(t_map *map)
 {
-	size_t		count;
-	t_point		*players;
+	size_t	count;
+	t_point	*players;
 
 	player_positions(map, &players);
 	count = 0;
 	while (players[count].x != (size_t)-1)
 		count++;
+	gc_add(players);
 	if (count == 0)
 		ft_error(E_NO_PLAYER);
 	if (count > 1)
 	{
-		gc_add(players);
 		count = 0;
 		while (players[count].x != (size_t)-1)
 		{
