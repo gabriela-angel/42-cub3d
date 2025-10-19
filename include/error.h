@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 13:42:01 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/18 12:27:05 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/18 21:39:10 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef enum e_error
 	E_OPEN_FAILED,
 	E_MLX_INIT_FAILED,
 	E_MLX_IMG_INIT_FAILED,
+	E_MLX_LOAD_PNG_FAILED,
 
 	E_INVALID_MAP_NAME,
 	E_EMPTY_MAP_FILE,

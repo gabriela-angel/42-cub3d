@@ -6,30 +6,48 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 16:06:24 by gangel-a          #+#    #+#             */
-/*   Updated: 2025/10/18 20:24:22 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/18 23:03:58 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// This function returns the texture that will be used based on the side hit
-static t_texture	*get_side_texture(t_ray *ray)
+void	ft_init_textures(t_map_textures *map_tex)
 {
+	map_tex->tex_arr[NORTH] = mlx_load_png(ft_map_search(map_tex->paths, "NO"));
+	if (!map_tex->tex_arr[NORTH])
+		ft_error(E_MLX_LOAD_PNG_FAILED);
+	map_tex->tex_arr[SOUTH] = mlx_load_png(ft_map_search(map_tex->paths, "SO"));
+	if (!map_tex->tex_arr[SOUTH])
+		ft_error(E_MLX_LOAD_PNG_FAILED);
+	map_tex->tex_arr[EAST] = mlx_load_png(ft_map_search(map_tex->paths, "EA"));
+	if (!map_tex->tex_arr[EAST])
+		ft_error(E_MLX_LOAD_PNG_FAILED);
+	map_tex->tex_arr[WEST] = mlx_load_png(ft_map_search(map_tex->paths, "WE"));
+	if (!map_tex->tex_arr[WEST])
+		ft_error(E_MLX_LOAD_PNG_FAILED);
+}
+
+static mlx_texture_t	*get_side_texture(t_ray *ray)
+{
+	mlx_texture_t	**tex_arr;
+
+	tex_arr = get_global_cube()->map.textures.tex_arr;
 	if (ray->side == 0)
 	{
 		if (ray->dir[X] > 0)
-			return (ft_map_search(map->textures.paths, "EA")); //find where these are defined
-		return (ft_map_search(map->textures.paths, "WE"));
+			return (tex_arr[EAST]);
+		return (tex_arr[WEST]);
 	}
 	else
 	{
 		if (ray->dir[Y] > 0)
-			return (ft_map_search(map->textures.paths, "SO"));
-		return (ft_map_search(map->textures.paths, "NO"));
+			return (tex_arr[SOUTH]);
+		return (tex_arr[NORTH]);
 	}
 }
 
-static int	define_tex_x(t_texture *tex, t_player *player, t_ray *ray)
+static int	define_tex_x(mlx_texture_t *tex, t_player *player, t_ray *ray)
 {
 	double		wall_x;
 	int			tex_x;
@@ -47,18 +65,19 @@ static int	define_tex_x(t_texture *tex, t_player *player, t_ray *ray)
 	return (tex_x);
 }
 
-static uint32_t	get_px_color(t_texture *tex, int x, int y)
+static uint32_t	get_px_color(mlx_texture_t *tex, int x, int y)
 {
 	uint8_t	*pixel_addr;
 	uint32_t	color;
 
-	color = *(int *)(tex->tex_addr + y * tex->line_size + x * (tex->bpp / 8));
+	pixel_addr = tex->pixels + (y * tex->width + x) * tex->bytes_per_pixel;
+	color = *(uint32_t *)pixel_addr;
 	return (color);
 }
 
 void	draw_textures(t_player *player, t_ray *ray, int x)
 {
-	t_texture	*tex;
+	mlx_texture_t	*tex;
 	int			y;
 	int			tex_pos[2];
 	double		step;

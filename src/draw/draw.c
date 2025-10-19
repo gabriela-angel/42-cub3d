@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 18:39:31 by gangel-a          #+#    #+#             */
-/*   Updated: 2025/10/18 20:34:37 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/18 23:04:57 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	draw_ceiling_and_floor(t_map_textures *m_tex, t_ray *ray, int x)
 	}
 }
 
-static void	draw_3d_map()
+void	draw_3d_map()
 {
 	int			x;
 	t_ray		ray;
@@ -50,16 +50,4 @@ static void	draw_3d_map()
 		draw_ceiling_and_floor(&(get_global_cube()->map.textures), &ray, x);
 		x++;
 	}
-}
-
-void	ft_render_img(void)
-{
-	t_mlx	*mlx;
-
-	mlx = get_global_mlx();
-	mlx_set_setting(MLX_STRETCH_IMAGE, true);
-	mlx->img = mlx_new_image(mlx->instance, WIDTH, HEIGHT);
-	if (!mlx->img || mlx_image_to_window(mlx->instance, mlx->img, 0, 0) < 0)
-		ft_error(E_MLX_IMG_INIT_FAILED);
-	draw_3d_map();
 }

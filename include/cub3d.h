@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 20:17:56 by lcosta-g          #+#    #+#             */
-/*   Updated: 2025/10/18 20:37:51 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/18 22:15:41 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 # include "../libs/libft/libft.h"
 # include <math.h>
-# include "error.h"
-# include "map.h"
 # include "mlx.h"
 # include "player.h"
 # include "raycaster.h"
+# include "map.h"
+# include "error.h"
 # include "settings.h"
 # include <fcntl.h>
 # include <stdlib.h>
@@ -36,7 +36,6 @@ typedef struct s_cube
 {
 	t_map		map;
 	t_player	player;
-	int			mouse_x;
 	char		*error_context;
 }	t_cube;
 

@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 21:25:48 by gangel-a          #+#    #+#             */
-/*   Updated: 2025/10/18 20:36:27 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/18 23:18:24 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,27 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 //BONUS
 void	cursor_hook(double xpos, double ypos, void *param)
 {
-	double		delta_x;
-	t_cube	*cube;
-	(void) ypos;
+	double		angle;
+	t_cube		*cube;
+
 	cube = (t_cube *)param;
-	if (cube->mouse_x < 0)
-		cube->mouse_x = xpos;
-	delta_x = xpos - cube->mouse_x;
-	if (delta_x != 0)
-		ft_rotate_cam(&cube->player, delta_x * MOUSE_SENSITIVITY);
-	cube->mouse_x = xpos;
+	(void) ypos;
+	angle = xpos - (WIDTH / 2);
+	if (fabs(angle) > 0.5)
+		ft_rotate_cam(&cube->player, angle * MOUSE_SENSITIVITY);
+	mlx_set_mouse_pos(get_global_mlx()->instance, WIDTH / 2, HEIGHT / 2);
 }
+
+// void	cursor_hook(void *param)
+// {
+// 	double		angle;
+// 	t_cube		*cube;
+// 	int			mouse_pos[2];
+
+// 	cube = (t_cube *)param;
+// 	mlx_get_mouse_pos(get_global_mlx()->instance, &mouse_pos[X], &mouse_pos[Y]);
+// 	angle = mouse_pos[X] - (WIDTH / 2);
+// 	if (fabs(angle) > 0.5)
+// 		ft_rotate_cam(&cube->player, angle * MOUSE_SENSITIVITY);
+// 	mlx_set_mouse_pos(get_global_mlx()->instance, WIDTH / 2, HEIGHT / 2);
+// }

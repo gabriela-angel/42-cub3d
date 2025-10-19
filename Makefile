@@ -53,7 +53,6 @@ MLX_FOLDER = ./mlx/
 
 FILES = \
 	main.c \
-	init_player.c \
 	$(PLAYER_FOLDER)init_player.c \
 	$(PLAYER_FOLDER)movement.c \
 	\
