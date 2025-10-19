@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 20:17:56 by lcosta-g          #+#    #+#             */
-/*   Updated: 2025/10/19 01:13:36 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/19 01:45:46 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,15 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+enum	e_axis
+{
+	X,
+	Y
+};
+
 typedef struct s_player
 {
 	double		pos[2];
-	char		dir_char;
 	double		dir[2];
 	double		plane[2];
 }				t_player;

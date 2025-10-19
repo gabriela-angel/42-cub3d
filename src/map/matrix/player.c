@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 18:32:15 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/19 01:16:44 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/19 01:46:05 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,23 @@ static char	player_positions(t_map *map, t_point **players)
 
 static void	set_player(t_map *map, t_point position, char direction)
 {
-	t_cube	*cub;
+	t_player	*player;
 
-	cub = get_global_cube();
-	cub->player.pos[0] = (double)position.x;
-	cub->player.pos[1] = (double)position.y;
-	cub->player.dir_char = direction;
+	player = &get_global_cube()->player;
+	player->pos[0] = (double)position.x + 0.5;
+	player->pos[1] = (double)position.y + 0.5;
+	player->dir[X] = 0;
+	player->dir[Y] = 0;
+	player->plane[X] = 0;
+	player->plane[Y] = 0;
+	if (direction == 'N')
+		player->dir[Y] = -1;
+	else if (direction == 'S')
+		player->dir[Y] = 1;
+	else if (direction == 'E')
+		player->dir[X] = 1;
+	else if (direction == 'W')
+		player->dir[X] = -1;
 }
 
 static void	get_player(t_map *map)
@@ -68,7 +79,7 @@ static void	get_player(t_map *map)
 	if (count > 1)
 	{
 		count = 0;
-		while (players[count].x != (size_t) - 1)
+		while (players[count].x != (size_t)-1)
 		{
 			add_flood_invalid_char(players[count]);
 			count++;
