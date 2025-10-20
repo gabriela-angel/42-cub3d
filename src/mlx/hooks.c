@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 21:25:48 by gangel-a          #+#    #+#             */
-/*   Updated: 2025/10/20 18:24:33 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/20 18:52:03 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,17 @@ void	set_mlx_hooks(void)
 	mlx_t	*g_mlx;
 
 	g_mlx = get_global_mlx()->instance;
+
+	int			next_x;
+	int			next_y;
+
+	next_x = (int)(get_global_cube()->player.pos[X]);;
+	next_y = (int)(get_global_cube()->player.pos[Y]);
+	printf("Spawn pos: x = %f, y = %f\n", get_global_cube()->player.pos[X], get_global_cube()->player.pos[Y]);
+	printf("Map size: width = %ld, height = %ld\n", get_global_cube()->map.width, get_global_cube()->map.height);
+
+	printf("Checking map[%d][%d]\n", next_y, next_x);
+	
 	mlx_set_cursor_mode(g_mlx, MLX_MOUSE_HIDDEN);
 	mlx_set_mouse_pos(get_global_mlx()->instance, WIDTH / 2, HEIGHT / 2);
 	mlx_key_hook(g_mlx, key_hook, get_global_cube());
