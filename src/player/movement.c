@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 23:04:56 by gangel-a          #+#    #+#             */
-/*   Updated: 2025/10/18 12:33:44 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/20 15:14:07 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ void	ft_strafe(t_player *p, char **map, keys_t key)
 		offset = COLLISION_OFFSET;
 	else
 		offset = -COLLISION_OFFSET;
-	if (map[(int)(p->pos[X] + plane[X] + offset)][(int)p->pos[Y]] == false)
+	if (map[(int)p->pos[Y]][(int)(p->pos[X] + plane[X] + offset)] == '0')
 		p->pos[X] += plane[X];
 	if (plane[Y] > 0)
 		offset = COLLISION_OFFSET;
 	else
 		offset = -COLLISION_OFFSET;
-	if (map[(int)p->pos[X]][(int)(p->pos[Y] + plane[Y] + offset)] == false)
+	if (map[(int)(p->pos[Y] + plane[Y] + offset)][(int)p->pos[X]] == '0')
 		p->pos[Y] += plane[Y];
 }
 
@@ -65,13 +65,13 @@ void	ft_move_backward(t_player *p, char **map)
 		offset = -COLLISION_OFFSET;
 	else
 		offset = COLLISION_OFFSET;
-	if (map[(int)(p->pos[X] - dir[X] + offset)][(int)(p->pos[Y])] == false)
+	if (map[(int)(p->pos[Y])][(int)(p->pos[X] - dir[X] + offset)] == '0')
 		p->pos[X] -= dir[X];
 	if (dir[Y] > 0)
 		offset = -COLLISION_OFFSET;
 	else
 		offset = COLLISION_OFFSET;
-	if (map[(int)(p->pos[X])][(int)(p->pos[Y] - dir[Y] + offset)] == false)
+	if (map[(int)(p->pos[Y] - dir[Y] + offset)][(int)(p->pos[X])] == '0')
 		p->pos[Y] -= dir[Y];
 }
 
@@ -86,12 +86,12 @@ void	ft_move_forward(t_player *p, char **map)
 		offset = COLLISION_OFFSET;
 	else
 		offset = -COLLISION_OFFSET;
-	if (map[(int)(p->pos[X] + dir[X] + offset)][(int)p->pos[Y]] == false)
+	if (map[(int)p->pos[Y]][(int)(p->pos[X] + dir[X] + offset)] == '0')
 		p->pos[X] += dir[X];
 	if (dir[Y] > 0)
 		offset = COLLISION_OFFSET;
 	else
 		offset = -COLLISION_OFFSET;
-	if (map[(int)p->pos[X]][(int)(p->pos[Y] + dir[Y] + offset)] == false)
+	if (map[(int)(p->pos[Y] + dir[Y] + offset)][(int)p->pos[X]] == '0')
 		p->pos[Y] += dir[Y];
 }

@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 18:39:31 by gangel-a          #+#    #+#             */
-/*   Updated: 2025/10/16 19:41:06 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/20 15:10:45 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	dda(t_ray *ray, char **map)
 			ray->map_pos[Y] += ray->step[Y];
 			ray->side = 1;
 		}
-		if (map[ray->map_pos[X]][ray->map_pos[Y]] > 0)
+		if (map[ray->map_pos[Y]][ray->map_pos[X]] > '0')
 			ray->hit = 1;
 	}
 }
@@ -59,7 +59,7 @@ static void	calc_step_and_side(t_ray *ray, t_player *player)
 	else
 	{
 		ray->step[X] = 1;
-		ray->side_dist[X] = (ray->map_pos[X] + 1.0 - player->pos[X]) * ray->delta_dist[X];
+		ray->side_dist[X] = (ray->map_pos[X] + 1 - player->pos[X]) * ray->delta_dist[X];
 	}
 	if (ray->dir[Y] < 0)
 	{
@@ -69,17 +69,17 @@ static void	calc_step_and_side(t_ray *ray, t_player *player)
 	else
 	{
 		ray->step[Y] = 1;
-		ray->side_dist[Y] = (ray->map_pos[Y] + 1.0 - player->pos[Y]) * ray->delta_dist[Y];
+		ray->side_dist[Y] = (ray->map_pos[Y] + 1 - player->pos[Y]) * ray->delta_dist[Y];
 	}
 }
 
 void	set_ray(t_player *player, t_ray *ray, int x)
 {
 	ray->cam_x = 2 * x / (double) WIDTH - 1;
-	ray->dir[X] = player->dir[X] + player->plane[X] * ray->cam_x;
-	ray->dir[Y] = player->dir[Y] + player->plane[Y] * ray->cam_x;
 	ray->map_pos[X] = (int) player->pos[X];
 	ray->map_pos[Y] = (int) player->pos[Y];
+	ray->dir[X] = player->dir[X] + player->plane[X] * ray->cam_x;
+	ray->dir[Y] = player->dir[Y] + player->plane[Y] * ray->cam_x;
 	if (ray->dir[X] == 0)
 		ray->delta_dist[X] = 1e30;
 	else

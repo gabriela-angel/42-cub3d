@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 16:06:24 by gangel-a          #+#    #+#             */
-/*   Updated: 2025/10/18 23:03:58 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/20 16:03:43 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,11 @@ static int	define_tex_x(mlx_texture_t *tex, t_player *player, t_ray *ray)
 
 static uint32_t	get_px_color(mlx_texture_t *tex, int x, int y)
 {
-	uint8_t	*pixel_addr;
+	uint8_t	*p;
 	uint32_t	color;
 
-	pixel_addr = tex->pixels + (y * tex->width + x) * tex->bytes_per_pixel;
-	color = *(uint32_t *)pixel_addr;
+	p = tex->pixels + (y * tex->width + x) * tex->bytes_per_pixel;
+	color = (p[0] << 24) | (p[1] << 16) | (p[2] << 8) | p[3];
 	return (color);
 }
 

@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 21:25:48 by gangel-a          #+#    #+#             */
-/*   Updated: 2025/10/18 23:18:24 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/20 16:02:17 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,18 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 	if (keydata.key == ESC && keydata.action != 0)
 		mlx_close_window(g_mlx->instance);
 	else if (keydata.key == W && keydata.action != 0)
+	{
+		printf("Key pressed: %d\n", keydata.key);
 		ft_move_forward(p, map);
+	}
 	else if (keydata.key == S && keydata.action != 0)
 		ft_move_backward(p, map);
 	else if ((keydata.key == A || keydata.key == D) && keydata.action != 0)
 		ft_strafe(p, map, keydata.key);
 	else if (keydata.key == LEFT_KEY && keydata.action != 0)
-		ft_rotate_cam(p, ROT_SPEED);
-	else if (keydata.key == RIGHT_KEY && keydata.action != 0)
 		ft_rotate_cam(p, -ROT_SPEED);
+	else if (keydata.key == RIGHT_KEY && keydata.action != 0)
+		ft_rotate_cam(p, ROT_SPEED);
 }
 
 //BONUS
