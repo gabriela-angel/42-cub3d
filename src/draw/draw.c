@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 18:39:31 by gangel-a          #+#    #+#             */
-/*   Updated: 2025/10/18 23:04:57 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/20 18:22:50 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static void	draw_ceiling_and_floor(t_map_textures *m_tex, t_ray *ray, int x)
 	img = get_global_mlx()->img;
 	while (y < ray->line_start)
 	{
-		// INTERPOLATE COLORS FOR A SMOOTH TRANSITION - NOT DONE YET
 		mlx_put_pixel(img, x, y, m_tex->ceiling);
 		y++;
 	}

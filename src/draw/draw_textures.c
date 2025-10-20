@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 16:06:24 by gangel-a          #+#    #+#             */
-/*   Updated: 2025/10/20 16:03:43 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/20 18:22:45 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ void	draw_textures(t_player *player, t_ray *ray, int x)
 	tex = get_side_texture(ray);
 	tex_pos[X] = define_tex_x(tex, player, ray);
 	step = 1.0 * tex->height / ray->line_height;
-	//tbh from here on it is kinda confusing
 	curr_tex_pos = (ray->line_start - HEIGHT / 2 + ray->line_height / 2) * step;
 	y = ray->line_start;
 	while (y < ray->line_end)
