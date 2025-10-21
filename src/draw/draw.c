@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 18:39:31 by gangel-a          #+#    #+#             */
-/*   Updated: 2025/10/21 00:43:01 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/21 09:37:50 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@ static void	draw_ceiling_and_floor(t_map_textures *m_tex, t_ray *ray, int x)
 
 	y = 0;
 	img = get_global_mlx()->img;
+	// DEBUG
+	if (ray->line_start < 0 || ray->line_start > HEIGHT || ray->line_end < 0 || ray->line_end > HEIGHT)
+	{
+		printf("Wall dist: %f\n", ray->wall_dist);
+		printf("Line start: %d, line end: %d\n", ray->line_start, ray->line_end);
+	}
 	while (y < ray->line_start)
 	{
 		mlx_put_pixel(img, x, y, m_tex->ceiling);
@@ -40,6 +46,7 @@ void	draw_3d_map(void)
 
 	x = 0;
 	player = get_global_cube()->player;
+	ft_bzero(&ray, sizeof(t_ray));
 	while (x < WIDTH)
 	{
 		set_ray(&player, &ray, x);
