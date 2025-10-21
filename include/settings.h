@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 13:42:53 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/21 00:39:15 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/21 18:46:26 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@
 // MOVEMENT SPEEDS
 # define MOVE_SPEED 0.05
 # define COLLISION_OFFSET 0.3
-# define ROT_SPEED 0.01
+# define ROT_SPEED 0.1
 # define MOUSE_SENSITIVITY 0.002
-
 
 #endif

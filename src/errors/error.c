@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 13:28:14 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/21 16:44:38 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/21 17:24:01 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	print_error(char *message)
 
 void	ft_error(t_error code)
 {
-	int	i;
+	int		i;
 	t_cube	*cub;
 
 	i = -1;

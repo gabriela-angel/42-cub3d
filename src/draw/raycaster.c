@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 18:39:31 by gangel-a          #+#    #+#             */
-/*   Updated: 2025/10/21 12:12:28 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/21 17:34:05 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,6 @@ void	calculate_wall_height(t_ray *ray)
 		ray->wall_dist = ray->side_dist[X] - ray->delta_dist[X];
 	else
 		ray->wall_dist = ray->side_dist[Y] - ray->delta_dist[Y];
-	// printf("Ray side: %d\n", ray->side);
-	// printf("Ray side_dist X: %f, side_dist Y: %f\n", ray->side_dist[X], ray->side_dist[Y]);
-	// printf("Ray delta_dist X: %f, delta_dist Y: %f\n", ray->delta_dist[X], ray->delta_dist[Y]);
-	// printf("Wall dist: %f\n", ray->wall_dist);
 	ray->line_height = (int)(HEIGHT / ray->wall_dist);
 	ray->line_start = -ray->line_height / 2 + HEIGHT / 2;
 	if (ray->line_start < 0)
@@ -34,7 +30,7 @@ void	calculate_wall_height(t_ray *ray)
 void	dda(t_ray *ray, char **map)
 {
 	char	m_cell;
-	
+
 	ray->hit = 0;
 	while (ray->hit == 0)
 	{
@@ -86,9 +82,9 @@ static void	calc_step_and_side(t_ray *ray, t_player *player)
 
 void	set_ray(t_player *player, t_ray *ray, int x)
 {
-	ray->cam_x = 2 * x / (double) WIDTH - 1;
-	ray->map_pos[X] = (int) player->pos[X];
-	ray->map_pos[Y] = (int) player->pos[Y];
+	ray->cam_x = 2 * x / (double)WIDTH - 1;
+	ray->map_pos[X] = (int)player->pos[X];
+	ray->map_pos[Y] = (int)player->pos[Y];
 	ray->dir[X] = player->dir[X] + player->plane[X] * ray->cam_x;
 	ray->dir[Y] = player->dir[Y] + player->plane[Y] * ray->cam_x;
 	if (ray->dir[X] == 0)

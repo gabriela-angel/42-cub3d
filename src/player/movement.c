@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 23:04:56 by gangel-a          #+#    #+#             */
-/*   Updated: 2025/10/20 18:18:53 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/21 17:24:19 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_rotate_cam(t_player *p, double rot_speed)
 
 void	ft_strafe_left(t_player *p, char **map)
 {
-	int		offset;
+	double	offset;
 	double	plane[2];
 	double	next_pos[2];
 	char	map_check[2];

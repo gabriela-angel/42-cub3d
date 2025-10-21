@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 16:06:24 by gangel-a          #+#    #+#             */
-/*   Updated: 2025/10/21 00:45:50 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/21 18:35:04 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int	define_tex_x(mlx_texture_t *tex, t_player *player, t_ray *ray)
 	else
 		wall_x = player->pos[X] + ray->wall_dist * ray->dir[X];
 	wall_x -= floor(wall_x);
-	tex_x = (int)(wall_x * (double)(tex->width));
+	tex_x = (int)(wall_x * tex->width);
 	if ((ray->side == 0 && ray->dir[X] > 0)
 		|| (ray->side == 1 && ray->dir[Y] < 0))
 		tex_x = tex->width - tex_x - 1;
@@ -79,18 +79,23 @@ void	draw_textures(t_player *player, t_ray *ray, int x)
 	mlx_texture_t	*tex;
 	int				y;
 	int				tex_pos[2];
+	int				index;
 	double			step;
-	double			curr_tex_pos;
 
 	tex = get_side_texture(ray);
 	tex_pos[X] = define_tex_x(tex, player, ray);
 	step = (float)tex->height / (float)ray->line_height;
-	curr_tex_pos = (ray->line_start - HEIGHT / 2 + ray->line_height / 2) * step;
 	y = ray->line_start;
 	while (y < ray->line_end)
 	{
-		tex_pos[Y] = (int)curr_tex_pos & (tex->height - 1);
-		curr_tex_pos += step;
+		tex_pos[Y] = (int)(y - HEIGHT / 2 + ray->line_height / 2) * step;
+		if (tex_pos[Y] < 0)
+			tex_pos[Y] = 0;
+		if (tex_pos[Y] >= (int)tex->height)
+			tex_pos[Y] = tex->height - 1;
+		index = (tex_pos[Y] * tex->width + tex_pos[X]) * tex->bytes_per_pixel;
+		if (tex->pixels[index + 3] == 0)
+			return ;
 		mlx_put_pixel(get_global_mlx()->img, x, y,
 			get_px_color(tex, tex_pos[X], tex_pos[Y]));
 		y++;

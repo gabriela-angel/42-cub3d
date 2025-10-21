@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 13:44:39 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/20 18:23:59 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/21 18:46:16 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,5 @@ void		ft_init_mlx(void);
 
 // HOOKS
 void		set_mlx_hooks(void);
-
 
 #endif

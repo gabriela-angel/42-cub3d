@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 21:15:06 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/21 16:43:08 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/21 17:02:47 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void				validate_map_chars(char **matrix);
 void				flood_fill_borders(char **mtrx, size_t wdt, size_t hgt);
 void				update_width_and_height(t_map *map, size_t line_length);
 void				ft_init_textures(t_map_textures *map_tex);
-void				draw_3d_map();
+void				draw_3d_map(void);
 void				draw_textures(t_player *player, t_ray *ray, int x);
 
 #endif

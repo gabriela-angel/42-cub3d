@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 18:32:15 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/19 01:46:05 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/21 17:39:18 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,25 +41,33 @@ static char	player_positions(t_map *map, t_point **players)
 	return (direction);
 }
 
-static void	set_player(t_map *map, t_point position, char direction)
+static void	set_player(t_point position, char direction)
 {
 	t_player	*player;
 
 	player = &get_global_cube()->player;
-	player->pos[0] = (double)position.x + 0.5;
-	player->pos[1] = (double)position.y + 0.5;
-	player->dir[X] = 0;
-	player->dir[Y] = 0;
-	player->plane[X] = 0;
-	player->plane[Y] = 0;
+	player->pos[X] = (double)position.x + 0.5;
+	player->pos[Y] = (double)position.y + 0.5;
 	if (direction == 'N')
+	{
 		player->dir[Y] = -1;
+		player->plane[X] = 0.66;
+	}
 	else if (direction == 'S')
+	{
 		player->dir[Y] = 1;
+		player->plane[X] = -0.66;
+	}
 	else if (direction == 'E')
+	{
 		player->dir[X] = 1;
+		player->plane[Y] = 0.66;
+	}
 	else if (direction == 'W')
+	{
 		player->dir[X] = -1;
+		player->plane[Y] = -0.66;
+	}
 }
 
 static void	get_player(t_map *map)
@@ -79,15 +87,14 @@ static void	get_player(t_map *map)
 	if (count > 1)
 	{
 		count = 0;
-		while (players[count].x != (size_t)-1)
+		while (players[count].x != (size_t)(-1))
 		{
 			add_flood_invalid_char(players[count]);
 			count++;
 		}
 		ft_error(E_MULTIPLE_PLAYER);
 	}
-	set_player(map, players[0], direction);
-	ft_free(players);
+	set_player(players[0], direction);
 }
 
 void	init_player(void)

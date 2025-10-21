@@ -171,3 +171,84 @@
    fun:mlx_init
    ...
 }
+
+{
+   <MLX_CODAM_DL_ERRORS>
+   Memcheck:Addr8
+   fun:strncmp
+   fun:is_dst
+   ...
+   obj:*/ld-*.so
+}
+
+{
+   <MLX_CODAM_DL_MALLOC>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   ...
+   fun:_dl_find_object_update
+   ...
+}
+
+{
+   <MLX_CODAM_DL_READ>
+   Memcheck:Addr8
+   fun:strncmp
+   fun:is_dst
+   fun:_dl_dst_substitute
+   ...
+}
+
+
+{
+   <MLX_CODAM_DL_ERRORS>
+   Memcheck:Addr8
+   fun:strncmp
+   fun:is_dst
+   ...
+   obj:*/ld-*.so
+}
+
+{
+   <MLX_CODAM_DL_MALLOC>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   ...
+   fun:_dl_find_object_update
+   ...
+}
+
+{
+   <MLX_CODAM_DL_READ>
+   Memcheck:Addr8
+   fun:strncmp
+   fun:is_dst
+   fun:_dl_dst_substitute
+   ...
+}
+
+{
+   <MLX_CODAM_DL_STRNCMP>
+   Memcheck:Addr8
+   fun:strncmp
+   fun:is_dst
+   fun:_dl_dst_count
+   fun:expand_dynamic_string_token
+   fun:fillin_rpath.isra.0
+   fun:decompose_rpath
+   fun:cache_rpath
+   fun:_dl_map_object
+   fun:openaux
+   fun:_dl_catch_exception
+   fun:_dl_map_object_deps
+   fun:dl_open_worker_begin
+}
+
+{
+   <DL_STRNCMP>
+   Memcheck:Addr8
+   fun:strncmp
+   obj:*/ld-*.so
+}

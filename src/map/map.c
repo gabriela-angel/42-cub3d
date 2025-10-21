@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 18:17:01 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/09 14:34:46 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/21 17:04:53 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	update_width_and_height(t_map *map, size_t line_length) // map_utils
+void	update_width_and_height(t_map *map, size_t line_length)
 {
 	size_t	new_width;
 

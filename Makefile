@@ -55,7 +55,7 @@ MLX_FOLDER = ./mlx/
 
 FILES = \
 	main.c \
-	$(PLAYER_FOLDER)init_player.c \
+	$(PLAYER_FOLDER)player.c \
 	$(PLAYER_FOLDER)movement.c \
 	\
 	$(DRAW_FOLDER)draw.c \
@@ -68,7 +68,6 @@ FILES = \
 	\
 	$(MAP_FOLDER)map.c \
 	$(MAP_FOLDER)$(MATRIX_FOLDER)matrix.c \
-	$(MAP_FOLDER)$(MATRIX_FOLDER)player.c \
 	$(MAP_FOLDER)$(MATRIX_FOLDER)flood_errors.c \
 	$(MAP_FOLDER)$(MATRIX_FOLDER)matrix_utils.c \
 	$(MAP_FOLDER)$(MATRIX_FOLDER)matrix_errors.c \
@@ -90,7 +89,7 @@ OBJS = $(addprefix $(BUILD_PATH), $(FILES:%.c=%.o))
 
 all: mlx libft $(BUILD_PATH) print $(NAME)
 
-mlx: 
+mlx:
 ifeq ($(wildcard $(MLX_BUILD_PATH)/$(MLX_NAME)),)
 	@printf "$(CYAN)-------------------- --------------- --------------------$(COLOR_LIMITER)\n"
 	@printf "$(CYAN)--------------------| COMPILING MLX |--------------------$(COLOR_LIMITER)\n"
@@ -120,7 +119,7 @@ endif
 
 $(NAME): $(OBJS) $(HEADER_PATH)cub3d.h
 	@printf "$(YELLOW)[Building]$(RESET) $(NAME)...\n"
-	@$(CC) $(CFLAGS) $(OFLAGS) -o $(NAME) $(OBJS) -I$(HEADER_PATH) $(LIB_PATH)/$(LIB_NAME) $(MLX_BUILD_PATH)/$(MLX_NAME) $(LIBFLAGS) 
+	@$(CC) $(CFLAGS) $(OFLAGS) -o $(NAME) $(OBJS) -I$(HEADER_PATH) $(LIB_PATH)/$(LIB_NAME) $(MLX_BUILD_PATH)/$(MLX_NAME) $(LIBFLAGS)
 	@printf "$(UP)$(CUT)"
 	@printf "$(GREEN)[Builded]$(RESET) $(NAME)...\n"
 	@printf "$(CYAN)------ --------------------------------------------- ------$(RESET)\n"

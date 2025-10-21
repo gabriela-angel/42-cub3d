@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 13:42:01 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/21 16:43:01 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/21 18:46:07 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,49 +21,38 @@
 typedef enum e_error
 {
 	E_SUCCESS = 0,
-
 	E_INVALID_ARGS,
 	E_OPEN_FAILED,
 	E_MLX_INIT_FAILED,
 	E_MLX_IMG_INIT_FAILED,
 	E_MLX_LOAD_PNG_FAILED,
-
 	E_INVALID_MAP_NAME,
 	E_EMPTY_MAP_FILE,
 	E_INVALID_FILE_CHAR,
 	E_EMPTY_MAP,
 	E_INVALID_ELEMENT,
-
 	E_INVALID_MAP_CHAR,
-
 	E_TEX_DUP,
 	E_F_DUP,
 	E_C_DUP,
-
 	E_TEX_NO_MISS,
 	E_TEX_SO_MISS,
 	E_TEX_WE_MISS,
 	E_TEX_EA_MISS,
 	E_F_MISS,
 	E_C_MISS,
-
 	E_NO_INV_EXT,
 	E_SO_INV_EXT,
 	E_WE_INV_EXT,
 	E_EA_INV_EXT,
-
 	E_MAP_NOT_LAST_ELEMENT,
-
 	E_NO_FILE,
 	E_SO_FILE,
 	E_WE_FILE,
 	E_EA_FILE,
-
 	E_INVALID_RGB_VALUE,
 	E_INVALID_RGB_FIELDS,
-
 	E_MAP_NOT_CLOSED,
-
 	E_MULTIPLE_PLAYER,
 	E_NO_PLAYER,
 }				t_error;

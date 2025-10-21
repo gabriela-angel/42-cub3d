@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 20:17:56 by lcosta-g          #+#    #+#             */
-/*   Updated: 2025/10/21 16:42:50 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/21 17:05:59 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-
-enum	e_axis
-{
-	X,
-	Y
-};
-
-typedef struct s_player
-{
-	double		pos[2];
-	double		dir[2];
-	double		plane[2];
-}				t_player;
 
 enum	e_axis
 {
