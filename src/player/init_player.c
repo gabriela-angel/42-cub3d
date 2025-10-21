@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 22:05:28 by gangel-a          #+#    #+#             */
-/*   Updated: 2025/10/20 19:34:52 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/21 00:42:42 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_init_player(void)
 		{
 			if (ft_strchr("NSEW", map->matrix[y_pos][x_pos]))
 			{
-				set_player_pos_dir(player,  map->matrix, x_pos, y_pos);
+				set_player_pos_dir(player, map->matrix, x_pos, y_pos);
 				return ;
 			}
 			x_pos++;

@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 20:32:27 by gangel-a          #+#    #+#             */
-/*   Updated: 2025/10/18 22:04:49 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/21 00:28:12 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@
 typedef struct s_ray
 {
 	double	cam_x;
-	int		map_pos[2];
 	double	dir[2];
 	double	side_dist[2];
 	double	delta_dist[2];
 	double	wall_dist;
-	int step[2];
-	int hit;
-	int side;
-	int line_height;
-	int line_start;
-	int line_end;
+	int		map_pos[2];
+	int		step[2];
+	int		hit;
+	int		side;
+	int		line_height;
+	int		line_start;
+	int		line_end;
 }	t_ray;
 
 // DRAW

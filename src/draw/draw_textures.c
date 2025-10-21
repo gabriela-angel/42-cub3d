@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 16:06:24 by gangel-a          #+#    #+#             */
-/*   Updated: 2025/10/20 18:22:45 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/21 00:45:50 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,23 +51,22 @@ static int	define_tex_x(mlx_texture_t *tex, t_player *player, t_ray *ray)
 {
 	double		wall_x;
 	int			tex_x;
-	
+
 	if (ray->side == 0)
 		wall_x = player->pos[Y] + ray->wall_dist * ray->dir[Y];
 	else
 		wall_x = player->pos[X] + ray->wall_dist * ray->dir[X];
 	wall_x -= floor(wall_x);
 	tex_x = (int)(wall_x * (double)(tex->width));
-	if (ray->side == 0 && ray->dir[X] > 0)
-		tex_x = tex->width - tex_x - 1;
-	if (ray->side == 1 && ray->dir[Y] < 0)
+	if ((ray->side == 0 && ray->dir[X] > 0)
+		|| (ray->side == 1 && ray->dir[Y] < 0))
 		tex_x = tex->width - tex_x - 1;
 	return (tex_x);
 }
 
 static uint32_t	get_px_color(mlx_texture_t *tex, int x, int y)
 {
-	uint8_t	*p;
+	uint8_t		*p;
 	uint32_t	color;
 
 	p = tex->pixels + (y * tex->width + x) * tex->bytes_per_pixel;
@@ -78,21 +77,22 @@ static uint32_t	get_px_color(mlx_texture_t *tex, int x, int y)
 void	draw_textures(t_player *player, t_ray *ray, int x)
 {
 	mlx_texture_t	*tex;
-	int			y;
-	int			tex_pos[2];
-	double		step;
-	double		curr_tex_pos;
+	int				y;
+	int				tex_pos[2];
+	double			step;
+	double			curr_tex_pos;
 
 	tex = get_side_texture(ray);
 	tex_pos[X] = define_tex_x(tex, player, ray);
-	step = 1.0 * tex->height / ray->line_height;
+	step = (float)tex->height / (float)ray->line_height;
 	curr_tex_pos = (ray->line_start - HEIGHT / 2 + ray->line_height / 2) * step;
 	y = ray->line_start;
 	while (y < ray->line_end)
 	{
 		tex_pos[Y] = (int)curr_tex_pos & (tex->height - 1);
 		curr_tex_pos += step;
-		mlx_put_pixel(get_global_mlx()->img, x, y, get_px_color(tex, tex_pos[X], tex_pos[Y]));
+		mlx_put_pixel(get_global_mlx()->img, x, y,
+			get_px_color(tex, tex_pos[X], tex_pos[Y]));
 		y++;
 	}
 }

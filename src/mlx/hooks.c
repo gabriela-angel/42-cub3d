@@ -6,11 +6,12 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 21:25:48 by gangel-a          #+#    #+#             */
-/*   Updated: 2025/10/20 18:52:03 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/21 00:48:19 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+// CURRENNTLY MOVING DIAGONALLY WHEN PRESSING TWO KEYS SIMULTANEOUSLY DOES NOT WORK
 
 static void	key_hook(mlx_key_data_t keydata, void *param)
 {
@@ -31,7 +32,7 @@ static void	key_hook(mlx_key_data_t keydata, void *param)
 		ft_move_backward(p, map);
 	else if (keydata.key == A && keydata.action != 0)
 		ft_strafe_left(p, map);
-	else if ( keydata.key == D && keydata.action != 0)
+	else if (keydata.key == D && keydata.action != 0)
 		ft_strafe_right(p, map);
 	else if (keydata.key == LEFT_KEY && keydata.action != 0)
 		ft_rotate_cam(p, -ROT_SPEED);
@@ -40,18 +41,18 @@ static void	key_hook(mlx_key_data_t keydata, void *param)
 }
 
 //BONUS
-static void	cursor_hook(double xpos, double ypos, void *param)
-{
-	double		angle;
-	t_cube		*cube;
+// static void	cursor_hook(double xpos, double ypos, void *param)
+// {
+// 	double		angle;
+// 	t_cube		*cube;
 
-	cube = (t_cube *)param;
-	(void) ypos;
-	angle = xpos - (WIDTH / 2);
-	if (fabs(angle) > 0.5)
-		ft_rotate_cam(&cube->player, angle * MOUSE_SENSITIVITY);
-	mlx_set_mouse_pos(get_global_mlx()->instance, WIDTH / 2, HEIGHT / 2);
-}
+// 	cube = (t_cube *)param;
+// 	(void) ypos;
+// 	angle = xpos - (WIDTH / 2);
+// 	if (fabs(angle) > 0.5)
+// 		ft_rotate_cam(&cube->player, angle * MOUSE_SENSITIVITY);
+// 	mlx_set_mouse_pos(get_global_mlx()->instance, WIDTH / 2, HEIGHT / 2);
+// }
 
 static void	main_loop(void *param)
 {
@@ -64,21 +65,10 @@ void	set_mlx_hooks(void)
 	mlx_t	*g_mlx;
 
 	g_mlx = get_global_mlx()->instance;
-
-	int			next_x;
-	int			next_y;
-
-	next_x = (int)(get_global_cube()->player.pos[X]);;
-	next_y = (int)(get_global_cube()->player.pos[Y]);
-	printf("Spawn pos: x = %f, y = %f\n", get_global_cube()->player.pos[X], get_global_cube()->player.pos[Y]);
-	printf("Map size: width = %ld, height = %ld\n", get_global_cube()->map.width, get_global_cube()->map.height);
-
-	printf("Checking map[%d][%d]\n", next_y, next_x);
-	
 	mlx_set_cursor_mode(g_mlx, MLX_MOUSE_HIDDEN);
 	mlx_set_mouse_pos(get_global_mlx()->instance, WIDTH / 2, HEIGHT / 2);
 	mlx_key_hook(g_mlx, key_hook, get_global_cube());
 	//BONUS: mouse movement
-	mlx_cursor_hook(g_mlx, cursor_hook, get_global_cube());
+	// mlx_cursor_hook(g_mlx, cursor_hook, get_global_cube());
 	mlx_loop_hook(g_mlx, main_loop, get_global_cube());
 }

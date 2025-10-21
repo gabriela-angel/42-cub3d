@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 18:39:31 by gangel-a          #+#    #+#             */
-/*   Updated: 2025/10/20 15:10:45 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/21 00:44:28 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,22 +54,26 @@ static void	calc_step_and_side(t_ray *ray, t_player *player)
 	if (ray->dir[X] < 0)
 	{
 		ray->step[X] = -1;
-		ray->side_dist[X] = (player->pos[X] - ray->map_pos[X]) * ray->delta_dist[X];
+		ray->side_dist[X] = (player->pos[X] - ray->map_pos[X])
+			* ray->delta_dist[X];
 	}
 	else
 	{
 		ray->step[X] = 1;
-		ray->side_dist[X] = (ray->map_pos[X] + 1 - player->pos[X]) * ray->delta_dist[X];
+		ray->side_dist[X] = (ray->map_pos[X] + 1 - player->pos[X])
+			* ray->delta_dist[X];
 	}
 	if (ray->dir[Y] < 0)
 	{
 		ray->step[Y] = -1;
-		ray->side_dist[Y] = (player->pos[Y] - ray->map_pos[Y]) * ray->delta_dist[Y];
+		ray->side_dist[Y] = (player->pos[Y] - ray->map_pos[Y])
+			* ray->delta_dist[Y];
 	}
 	else
 	{
 		ray->step[Y] = 1;
-		ray->side_dist[Y] = (ray->map_pos[Y] + 1 - player->pos[Y]) * ray->delta_dist[Y];
+		ray->side_dist[Y] = (ray->map_pos[Y] + 1 - player->pos[Y])
+			* ray->delta_dist[Y];
 	}
 }
 

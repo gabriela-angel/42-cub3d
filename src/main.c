@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 08:15:36 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/10/20 18:47:43 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/21 00:47:46 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,5 @@ int	main(int ac, char *av[])
 	set_mlx_hooks();
 	mlx_loop(g_mlx->instance);
 	ft_error(E_SUCCESS);
-	
 	return (0);
 }

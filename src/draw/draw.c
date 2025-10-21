@@ -6,7 +6,7 @@
 /*   By: gangel-a <gangel-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 18:39:31 by gangel-a          #+#    #+#             */
-/*   Updated: 2025/10/20 18:22:50 by gangel-a         ###   ########.fr       */
+/*   Updated: 2025/10/21 00:43:01 by gangel-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	draw_ceiling_and_floor(t_map_textures *m_tex, t_ray *ray, int x)
 {
-	int	y;
+	int			y;
 	mlx_image_t	*img;
 
 	y = 0;
@@ -32,7 +32,7 @@ static void	draw_ceiling_and_floor(t_map_textures *m_tex, t_ray *ray, int x)
 	}
 }
 
-void	draw_3d_map()
+void	draw_3d_map(void)
 {
 	int			x;
 	t_ray		ray;
