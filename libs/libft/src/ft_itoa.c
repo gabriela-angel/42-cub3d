@@ -6,7 +6,7 @@
 /*   By: lhenriqu <lhenriqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 20:10:09 by lhenriqu          #+#    #+#             */
-/*   Updated: 2025/01/09 12:20:49 by lhenriqu         ###   ########.fr       */
+/*   Updated: 2025/10/09 19:44:40 by lhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	*ft_itoa(int n)
 	if (negative == 1)
 		nlong = -nlong;
 	digits = count_char(nlong);
-	str = (char *)malloc(negative + digits + 1);
+	str = (char *)ft_malloc(negative + digits + 1);
 	if (str == NULL)
 		return (NULL);
 	if (negative == 1)

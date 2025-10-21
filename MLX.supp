@@ -135,7 +135,16 @@
    Memcheck:Leak
    match-leak-kinds: reachable
    ...
-   obj:*/libLLVM.so*
+   obj:*/libLLVM*.so*
+   ...
+}
+{
+ <MLX_CODAM_LLVM_MANAGED_STATIC>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:_Znwm
+   ...
+   fun:_ZN4llvm17ManagedStaticBase22RegisterManagedStaticEPFPvvEPFvS1_E
    ...
 }
 {

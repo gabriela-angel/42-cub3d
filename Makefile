@@ -49,6 +49,8 @@ DRAW_FOLDER = ./draw/
 ERRORS_FOLDER = ./errors/
 SHARED_FOLDER = ./shared/
 MAP_FOLDER = ./map/
+MATRIX_FOLDER = ./matrix/
+TEXTURE_FOLDER = ./texture/
 MLX_FOLDER = ./mlx/
 
 FILES = \
@@ -65,9 +67,14 @@ FILES = \
 	$(ERRORS_FOLDER)generic.c \
 	\
 	$(MAP_FOLDER)map.c \
-	$(MAP_FOLDER)matrix.c \
-	$(MAP_FOLDER)texture.c \
-	$(MAP_FOLDER)validation.c \
+	$(MAP_FOLDER)$(MATRIX_FOLDER)matrix.c \
+	$(MAP_FOLDER)$(MATRIX_FOLDER)player.c \
+	$(MAP_FOLDER)$(MATRIX_FOLDER)flood_errors.c \
+	$(MAP_FOLDER)$(MATRIX_FOLDER)matrix_utils.c \
+	$(MAP_FOLDER)$(MATRIX_FOLDER)matrix_errors.c \
+	$(MAP_FOLDER)$(MATRIX_FOLDER)matrix_validation.c \
+	$(MAP_FOLDER)$(TEXTURE_FOLDER)texture.c \
+	$(MAP_FOLDER)$(TEXTURE_FOLDER)texture_validation.c \
 	\
 	$(MLX_FOLDER)mlx.c \
 	$(MLX_FOLDER)hooks.c \
